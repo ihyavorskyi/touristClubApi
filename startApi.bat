@@ -1,2 +1,2 @@
-cd D:\C#\TouristClubApi\WebAPI\TouristClubAPI
+cd D:\touristClubApi\WebAPI\TouristClubAPI
 dotnet run

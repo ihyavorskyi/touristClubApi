@@ -1,2 +1,2 @@
-cd D:\C#\TouristClubApi\TouristClubView
+cd D:\touristClubApi\ClientSide
 npm start

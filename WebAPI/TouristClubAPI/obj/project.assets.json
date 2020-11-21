@@ -6156,11 +6156,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#\\TouristClubApi\\WebAPI\\TouristClubAPI\\TouristClub.API.csproj",
+      "projectUniqueName": "D:\\touristClubApi\\WebAPI\\TouristClubAPI\\TouristClub.API.csproj",
       "projectName": "TouristClub.API",
-      "projectPath": "D:\\C#\\TouristClubApi\\WebAPI\\TouristClubAPI\\TouristClub.API.csproj",
+      "projectPath": "D:\\touristClubApi\\WebAPI\\TouristClubAPI\\TouristClub.API.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "D:\\C#\\TouristClubApi\\WebAPI\\TouristClubAPI\\obj\\",
+      "outputPath": "D:\\touristClubApi\\WebAPI\\TouristClubAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
