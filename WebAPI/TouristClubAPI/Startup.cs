@@ -1,9 +1,3 @@
-using TouristClub.API.Middlewares;
-using TouristClub.API.Services;
-using TouristClub.API.Services.Interfaces;
-using TouristClubApi.Data;
-using TouristClubApi.Data.Models;
-using TouristClubApi.Middlewares;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -20,6 +14,12 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TouristClub.API.Middlewares;
+using TouristClub.API.Services;
+using TouristClub.API.Services.Interfaces;
+using TouristClubApi.Data;
+using TouristClubApi.Data.Models;
+using TouristClubApi.Middlewares;
 
 namespace TouristClubApi
 {

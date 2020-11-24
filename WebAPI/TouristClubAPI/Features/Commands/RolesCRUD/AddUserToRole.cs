@@ -1,13 +1,10 @@
-﻿using TouristClub.API.Data.DTOs;
-using TouristClubApi.Data.Models;
-using TouristClubApi.Exceptions;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using TouristClub.API.Data.DTOs;
+using TouristClubApi.Data.Models;
+using TouristClubApi.Exceptions;
 
 namespace TouristClub.API.Features.Commands.Roles
 {

@@ -1,8 +1,8 @@
-﻿using TouristClubApi.Data;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System.Threading;
 using System.Threading.Tasks;
+using TouristClubApi.Data;
 
 namespace TouristClub.API.Features.Commands.Roles
 {

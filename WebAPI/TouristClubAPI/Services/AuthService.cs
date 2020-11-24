@@ -1,6 +1,4 @@
-﻿using TouristClub.API.Data.Models.Auth;
-using TouristClub.API.Services.Interfaces;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -10,6 +8,8 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using TouristClub.API.Data.Models.Auth;
+using TouristClub.API.Services.Interfaces;
 
 namespace TouristClub.API.Services
 {
