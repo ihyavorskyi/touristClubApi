@@ -36,13 +36,7 @@ namespace TouristClubApi
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = "";
-            var mName = Environment.MachineName;
-            if (mName == "DESKTOP-QRMC7LQ")
-                connectionString = Configuration.GetConnectionString("IgorLocalDb");
-            else if (mName == "DESKTOP-V1GMI6E")
-                connectionString = Configuration.GetConnectionString("VasylLocalDb");
-            else if (mName == "DESKTOP-QFMO96R")
-                connectionString = Configuration.GetConnectionString("MishaLocalDb");
+            connectionString = Configuration.GetConnectionString("LocalDb");
 
             services.AddEntityFrameworkSqlServer().AddDbContext<AppDbContext>(options =>
             {
