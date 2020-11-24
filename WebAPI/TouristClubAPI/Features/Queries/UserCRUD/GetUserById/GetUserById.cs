@@ -42,8 +42,7 @@ namespace TouristClub.API.Features.Queries.UserCRUD.GetUserById
                     LastName = user.LastName,
                     Email = user.Email,
                     PhoneNumber = user.PhoneNumber,
-                    Age = user.Age,
-                    DepartmentId = user.DepartmentId
+                    Age = user.Age
                 };
 
                 return model;

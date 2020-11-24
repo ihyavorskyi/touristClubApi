@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TouristClubApi.Data;
 
 namespace TouristClub.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201124145241_UserComments")]
+    partial class UserComments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -229,7 +231,7 @@ namespace TouristClub.API.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AuthorId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -237,18 +239,10 @@ namespace TouristClub.API.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
 
                     b.HasIndex("CategoryId");
 
@@ -298,67 +292,59 @@ namespace TouristClub.API.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("TouristClub.API.Data.Models.Excursion", b =>
+            modelBuilder.Entity("TouristClubApi.Data.Models.Department", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DepartmentName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NumberOfSeats")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Price")
+                    b.Property<int>("ScheduleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Excursions");
+                    b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("TouristClub.API.Data.Models.Ticket", b =>
+            modelBuilder.Entity("TouristClubApi.Data.Models.Record", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateOfIssuance")
+                    b.Property<DateTime>("DateOfMeeting")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ExcursionId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DateOfRecord")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("OwnerId")
+                    b.Property<string>("DoctorId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("UniqueCode")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("PatientId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("ServiceId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExcursionId");
+                    b.HasIndex("DoctorId");
 
-                    b.HasIndex("OwnerId");
+                    b.HasIndex("PatientId");
 
-                    b.ToTable("Tickets");
+                    b.ToTable("Records");
                 });
 
             modelBuilder.Entity("TouristClubApi.Data.Models.User", b =>
@@ -366,6 +352,9 @@ namespace TouristClub.API.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
@@ -376,6 +365,8 @@ namespace TouristClub.API.Migrations
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
+
+                    b.HasIndex("DepartmentId");
 
                     b.HasDiscriminator().HasValue("User");
                 });
@@ -433,10 +424,6 @@ namespace TouristClub.API.Migrations
 
             modelBuilder.Entity("TouristClub.API.Data.Models.Article", b =>
                 {
-                    b.HasOne("TouristClubApi.Data.Models.User", "User")
-                        .WithMany("Articles")
-                        .HasForeignKey("AuthorId");
-
                     b.HasOne("TouristClub.API.Data.Models.Category", "Category")
                         .WithMany("Articles")
                         .HasForeignKey("CategoryId")
@@ -457,26 +444,22 @@ namespace TouristClub.API.Migrations
                         .HasForeignKey("AuthorId");
                 });
 
-            modelBuilder.Entity("TouristClub.API.Data.Models.Excursion", b =>
+            modelBuilder.Entity("TouristClubApi.Data.Models.Record", b =>
                 {
-                    b.HasOne("TouristClub.API.Data.Models.Category", "Category")
-                        .WithMany("Excursions")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("TouristClubApi.Data.Models.User", "Doctor")
+                        .WithMany("Records")
+                        .HasForeignKey("DoctorId");
+
+                    b.HasOne("TouristClubApi.Data.Models.User", "Patient")
+                        .WithMany("Visits")
+                        .HasForeignKey("PatientId");
                 });
 
-            modelBuilder.Entity("TouristClub.API.Data.Models.Ticket", b =>
+            modelBuilder.Entity("TouristClubApi.Data.Models.User", b =>
                 {
-                    b.HasOne("TouristClub.API.Data.Models.Excursion", "Excursion")
-                        .WithMany("Tickets")
-                        .HasForeignKey("ExcursionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TouristClubApi.Data.Models.User", "User")
-                        .WithMany("Tickets")
-                        .HasForeignKey("OwnerId");
+                    b.HasOne("TouristClubApi.Data.Models.Department", "Department")
+                        .WithMany("Doctors")
+                        .HasForeignKey("DepartmentId");
                 });
 #pragma warning restore 612, 618
         }

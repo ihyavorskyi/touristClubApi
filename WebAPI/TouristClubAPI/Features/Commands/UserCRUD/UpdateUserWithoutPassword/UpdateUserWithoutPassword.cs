@@ -42,7 +42,6 @@ namespace TouristClub.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword
                 user.Email = command.User.Email;
                 user.PhoneNumber = command.User.PhoneNumber;
                 user.Age = command.User.Age;
-                user.DepartmentId = command.User.DepartmentId;
                 var result = await _userManager.UpdateAsync(user);
                 if (!result.Succeeded)
                 {

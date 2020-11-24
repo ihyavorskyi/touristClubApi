@@ -1,28 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TouristClubApi.Migrations
+namespace TouristClub.API.Migrations
 {
-    public partial class initialization : Migration
+    public partial class LOLWE : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            //migrationBuilder.CreateTable(
-            //    name: "Addresses",
-            //    columns: table => new
-            //    {
-            //        Id = table.Column<int>(nullable: false)
-            //            .Annotation("SqlServer:Identity", "1, 1"),
-            //        Region = table.Column<string>(nullable: true),
-            //        City = table.Column<string>(nullable: true),
-            //        Street = table.Column<string>(nullable: true),
-            //        HouseNumber = table.Column<int>(nullable: false)
-            //    },
-            //    constraints: table =>
-            //    {
-            //        table.PrimaryKey("PK_Addresses", x => x.Id);
-            //    });
-
             //migrationBuilder.CreateTable(
             //    name: "AspNetRoles",
             //    columns: table => new
@@ -38,33 +22,32 @@ namespace TouristClubApi.Migrations
             //    });
 
             //migrationBuilder.CreateTable(
-            //    name: "Schedules",
+            //    name: "Categories",
             //    columns: table => new
             //    {
             //        Id = table.Column<int>(nullable: false)
             //            .Annotation("SqlServer:Identity", "1, 1"),
-            //        StartHour = table.Column<int>(nullable: false),
-            //        EndHour = table.Column<int>(nullable: false),
-            //        IsSaturdayWork = table.Column<bool>(nullable: false)
+            //        Name = table.Column<string>(nullable: true)
             //    },
             //    constraints: table =>
             //    {
-            //        table.PrimaryKey("PK_Schedules", x => x.Id);
+            //        table.PrimaryKey("PK_Categories", x => x.Id);
             //    });
 
             //migrationBuilder.CreateTable(
-            //    name: "Services",
+            //    name: "Departments",
             //    columns: table => new
             //    {
             //        Id = table.Column<int>(nullable: false)
             //            .Annotation("SqlServer:Identity", "1, 1"),
-            //        Price = table.Column<int>(nullable: false),
-            //        Name = table.Column<string>(nullable: true),
-            //        Description = table.Column<string>(nullable: true)
+            //        DepartmentName = table.Column<string>(nullable: true),
+            //        Description = table.Column<string>(nullable: true),
+            //        AddressId = table.Column<int>(nullable: false),
+            //        ScheduleId = table.Column<int>(nullable: false)
             //    },
             //    constraints: table =>
             //    {
-            //        table.PrimaryKey("PK_Services", x => x.Id);
+            //        table.PrimaryKey("PK_Departments", x => x.Id);
             //    });
 
             //migrationBuilder.CreateTable(
@@ -89,29 +72,23 @@ namespace TouristClubApi.Migrations
             //    });
 
             //migrationBuilder.CreateTable(
-            //    name: "Departments",
+            //    name: "Articles",
             //    columns: table => new
             //    {
             //        Id = table.Column<int>(nullable: false)
             //            .Annotation("SqlServer:Identity", "1, 1"),
-            //        DepartmentName = table.Column<string>(nullable: true),
+            //        AuthorId = table.Column<string>(nullable: true),
+            //        CategoryId = table.Column<int>(nullable: false),
             //        Description = table.Column<string>(nullable: true),
-            //        AddressId = table.Column<int>(nullable: false),
-            //        ScheduleId = table.Column<int>(nullable: false)
+            //        Text = table.Column<string>(nullable: true)
             //    },
             //    constraints: table =>
             //    {
-            //        table.PrimaryKey("PK_Departments", x => x.Id);
+            //        table.PrimaryKey("PK_Articles", x => x.Id);
             //        table.ForeignKey(
-            //            name: "FK_Departments_Addresses_AddressId",
-            //            column: x => x.AddressId,
-            //            principalTable: "Addresses",
-            //            principalColumn: "Id",
-            //            onDelete: ReferentialAction.Cascade);
-            //        table.ForeignKey(
-            //            name: "FK_Departments_Schedules_ScheduleId",
-            //            column: x => x.ScheduleId,
-            //            principalTable: "Schedules",
+            //            name: "FK_Articles_Categories_CategoryId",
+            //            column: x => x.CategoryId,
+            //            principalTable: "Categories",
             //            principalColumn: "Id",
             //            onDelete: ReferentialAction.Cascade);
             //    });
@@ -151,30 +128,6 @@ namespace TouristClubApi.Migrations
             //            principalTable: "Departments",
             //            principalColumn: "Id",
             //            onDelete: ReferentialAction.Restrict);
-            //    });
-
-            //migrationBuilder.CreateTable(
-            //    name: "DepartmentServices",
-            //    columns: table => new
-            //    {
-            //        DepartmentId = table.Column<int>(nullable: false),
-            //        ServiceId = table.Column<int>(nullable: false)
-            //    },
-            //    constraints: table =>
-            //    {
-            //        table.PrimaryKey("PK_DepartmentServices", x => new { x.DepartmentId, x.ServiceId });
-            //        table.ForeignKey(
-            //            name: "FK_DepartmentServices_Departments_DepartmentId",
-            //            column: x => x.DepartmentId,
-            //            principalTable: "Departments",
-            //            principalColumn: "Id",
-            //            onDelete: ReferentialAction.Cascade);
-            //        table.ForeignKey(
-            //            name: "FK_DepartmentServices_Services_ServiceId",
-            //            column: x => x.ServiceId,
-            //            principalTable: "Services",
-            //            principalColumn: "Id",
-            //            onDelete: ReferentialAction.Cascade);
             //    });
 
             //migrationBuilder.CreateTable(
@@ -271,7 +224,8 @@ namespace TouristClubApi.Migrations
             //        DoctorId = table.Column<string>(nullable: true),
             //        PatientId = table.Column<string>(nullable: true),
             //        DateOfRecord = table.Column<DateTime>(nullable: false),
-            //        DateOfMeeting = table.Column<DateTime>(nullable: false)
+            //        DateOfMeeting = table.Column<DateTime>(nullable: false),
+            //        ServiceId = table.Column<int>(nullable: true)
             //    },
             //    constraints: table =>
             //    {
@@ -289,6 +243,11 @@ namespace TouristClubApi.Migrations
             //            principalColumn: "Id",
             //            onDelete: ReferentialAction.Restrict);
             //    });
+
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Articles_CategoryId",
+            //    table: "Articles",
+            //    column: "CategoryId");
 
             //migrationBuilder.CreateIndex(
             //    name: "IX_AspNetRoleClaims_RoleId",
@@ -318,11 +277,6 @@ namespace TouristClubApi.Migrations
             //    column: "RoleId");
 
             //migrationBuilder.CreateIndex(
-            //    name: "IX_AspNetUsers_DepartmentId",
-            //    table: "AspNetUsers",
-            //    column: "DepartmentId");
-
-            //migrationBuilder.CreateIndex(
             //    name: "EmailIndex",
             //    table: "AspNetUsers",
             //    column: "NormalizedEmail");
@@ -335,19 +289,9 @@ namespace TouristClubApi.Migrations
             //    filter: "[NormalizedUserName] IS NOT NULL");
 
             //migrationBuilder.CreateIndex(
-            //    name: "IX_Departments_AddressId",
-            //    table: "Departments",
-            //    column: "AddressId");
-
-            //migrationBuilder.CreateIndex(
-            //    name: "IX_Departments_ScheduleId",
-            //    table: "Departments",
-            //    column: "ScheduleId");
-
-            //migrationBuilder.CreateIndex(
-            //    name: "IX_DepartmentServices_ServiceId",
-            //    table: "DepartmentServices",
-            //    column: "ServiceId");
+            //    name: "IX_AspNetUsers_DepartmentId",
+            //    table: "AspNetUsers",
+            //    column: "DepartmentId");
 
             //migrationBuilder.CreateIndex(
             //    name: "IX_Records_DoctorId",
@@ -362,6 +306,9 @@ namespace TouristClubApi.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            //migrationBuilder.DropTable(
+            //    name: "Articles");
+
             //migrationBuilder.DropTable(
             //    name: "AspNetRoleClaims");
 
@@ -378,28 +325,19 @@ namespace TouristClubApi.Migrations
             //    name: "AspNetUserTokens");
 
             //migrationBuilder.DropTable(
-            //    name: "DepartmentServices");
-
-            //migrationBuilder.DropTable(
             //    name: "Records");
 
             //migrationBuilder.DropTable(
-            //    name: "AspNetRoles");
+            //    name: "Categories");
 
             //migrationBuilder.DropTable(
-            //    name: "Services");
+            //    name: "AspNetRoles");
 
             //migrationBuilder.DropTable(
             //    name: "AspNetUsers");
 
             //migrationBuilder.DropTable(
             //    name: "Departments");
-
-            //migrationBuilder.DropTable(
-            //    name: "Addresses");
-
-            //migrationBuilder.DropTable(
-            //    name: "Schedules");
         }
     }
 }

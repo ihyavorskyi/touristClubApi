@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
+using TouristClub.API.Data.Models;
 
 namespace TouristClubApi.Data.Models
 {
@@ -8,13 +9,12 @@ namespace TouristClubApi.Data.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
-        public int? DepartmentId { get; set; }
         public int RoleId { get; set; }
 
         // nav props
-        public Department Department { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
-        public virtual ICollection<Record> Records { get; set; }
-        public virtual ICollection<Record> Visits { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }
