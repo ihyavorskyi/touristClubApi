@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Article } from 'src/app/data/models/article';
 
 
 @Injectable({
@@ -18,7 +19,7 @@ export class ArticleService {
         return this.http.get<ShortArticle[]>(this.url);
     }
 
-    /*     getDepartment(id: number): Observable<Department> {
-          return this.http.get<Department>(this.url + `/${id}`);
-        } */
+    getDepartment(id: number): Observable<Article> {
+        return this.http.get<Article>(this.url + `/${id}`);
+    }
 }

@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { ArticleService } from './../../../department-functionality/services/article.service';
+import { ArticleService } from '../../services/article.service';
 import { ShortArticle } from './../../../data/models/shortArticle';
 import { Component, OnInit } from '@angular/core';
 
@@ -21,7 +21,7 @@ export class ArticlesListComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToArticle(id: number) {
-    console.log(id);
+  goToArticle(id: number): void {
+    this.router.navigateByUrl(`/article/${id}`);
   }
 }

@@ -30,6 +30,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { CabinetNavComponent } from './navigation/cabinet-nav/cabinet-nav.component';
 import { AccountModule } from './account/account.module';
 import { ChangePasswordFormComponent } from './account/change-password-form/change-password-form.component';
+import { ArticleComponent } from './articles/article/article/article.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -71,6 +72,7 @@ export const MY_DATE_FORMATS = {
         { path: 'department/:id', component: DepartmentComponent },
         { path: 'main', component: MainPageComponent },
         { path: 'articles', component: ArticlesListComponent },
+        { path: 'article/:id', component: ArticleComponent },
         { path: '**', redirectTo: 'main' }
 
       ]),

@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {DepartmentService} from '../services/department.service';
-import {Department} from '../../data/models/department';
-import {MatDialog} from '@angular/material/dialog';
-import {AddRecordFormComponent} from '../forms/add-record-form/add-record-form.component';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DepartmentService } from '../services/department.service';
+import { Department } from '../../data/models/department';
+import { MatDialog } from '@angular/material/dialog';
+import { AddRecordFormComponent } from '../forms/add-record-form/add-record-form.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-department',
@@ -18,9 +18,7 @@ export class DepartmentComponent implements OnInit {
   isServicesVisible = false;
 
   constructor(private route: ActivatedRoute, private departmentService: DepartmentService,
-              public dialog: MatDialog, private snackBar: MatSnackBar
-  ) {
-  }
+    public dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     console.log('NgOnInit');
@@ -39,7 +37,7 @@ export class DepartmentComponent implements OnInit {
     let dialogRef;
     dialogRef = this.dialog.open(AddRecordFormComponent, {
       width: '450px',
-      data: {doctors: this.department.doctors, depServices: this.department.departmentServices},
+      data: { doctors: this.department.doctors, depServices: this.department.departmentServices },
       panelClass: 'my-dialog-window'
     });
     dialogRef.afterOpened().subscribe(res => {
