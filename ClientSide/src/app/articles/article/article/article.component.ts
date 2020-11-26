@@ -11,9 +11,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ArticleComponent implements OnInit {
   article: Article;
+  articleId: number;
 
-  constructor(private route: ActivatedRoute, private aArticleService: ArticleService) { }
+  constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
 
   ngOnInit() {
+    console.log('NgOnInit');
+    this.route.params.subscribe(params => {
+      if (params.id) {
+        this.articleId = params.id;
+        this.articleService.getArticle(this.articleId).subscribe(ar => {
+          console.log('GOT id = ' + ar.id +' / title = '+ ar.title);
+          this.article = ar;
+        });
+      }
+    });
   }
 }

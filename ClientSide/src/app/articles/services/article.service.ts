@@ -19,7 +19,7 @@ export class ArticleService {
         return this.http.get<ShortArticle[]>(this.url);
     }
 
-    getDepartment(id: number): Observable<Article> {
+    getArticle(id: number): Observable<Article> {
         return this.http.get<Article>(this.url + `/${id}`);
     }
 }
