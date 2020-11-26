@@ -27,5 +27,13 @@ namespace TouristClub.API.Controllers
             var res = await _mediator.Send(getQuery);
             return Ok(res);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAsync(int id)
+        {
+            var getQuery = new GetArticleById.Query(id);
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
+        }
     }
 }

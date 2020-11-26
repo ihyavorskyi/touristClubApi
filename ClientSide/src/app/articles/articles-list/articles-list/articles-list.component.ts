@@ -16,12 +16,12 @@ export class ArticlesListComponent implements OnInit {
     this.articleService.getArticles().subscribe(value => {
       this.articles = value;
     });
-    
-
-
   }
 
   ngOnInit() {
   }
 
+  goToArticle(id: number) {
+    console.log(id);
+  }
 }

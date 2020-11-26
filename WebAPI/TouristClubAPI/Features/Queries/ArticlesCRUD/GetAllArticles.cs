@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TouristClub.API.Data.DTOs;
+using TouristClub.API.Data.Models;
 using TouristClubApi.Data;
 
 namespace TouristClub.API.Features.Queries.ArticlesCRUD
@@ -32,7 +32,11 @@ namespace TouristClub.API.Features.Queries.ArticlesCRUD
                     {
                         Id = ar.Id,
                         Title = ar.Title,
-                        Description = ar.Description
+                        Description = ar.Description,
+                        Category = new Category
+                        {
+                            Name = ar.Category.Name
+                        }
                     }).ToListAsync();
                 return articles;
             }
