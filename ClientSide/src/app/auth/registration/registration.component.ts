@@ -15,15 +15,6 @@ export class RegistrationComponent implements OnInit {
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
   }
 
-  //
-  // get emailGet(): any {
-  //   return this.loginForm.get('email');
-  // }
-  //
-  // get passwordGet(): any {
-  //   return this.loginForm.get('password');
-  // }
-
   ngOnInit(): void {
     this.authService.clearStorage();
     this.initForm();

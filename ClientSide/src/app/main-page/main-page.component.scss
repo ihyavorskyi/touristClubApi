@@ -1,3 +1,7 @@
+.main-content {
+  background: url(../../assets/world_map.jpg) 0 0/100% 100% no-repeat fixed;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -11,11 +15,6 @@ div {
   width: 1200px;
   border: 10px;
   margin: 0 auto;
-}
-
-.title {
-
-
 }
 
 .title h2 {
@@ -80,13 +79,13 @@ div {
 
 hr {
   border: none;
-  color: white; /* Цвет линии для остальных браузеров */
+  color: white;
   background-color: white;
-  height: 2px; /* Толщина линии */
+  height: 2px;
 }
 
 .button {
-  background: #fed136;
+  background: #ffd747;
   color: #484543;
   border-radius: 3px;
   display: block;
@@ -139,5 +138,3 @@ hr {
 #one {
   margin-bottom: 250px;
 }
-
-
