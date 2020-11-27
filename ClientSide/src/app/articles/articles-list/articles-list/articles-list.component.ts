@@ -25,4 +25,8 @@ export class ArticlesListComponent implements OnInit {
     console.log("goToArticle/" + id);
     this.router.navigateByUrl(`/article/${id}`);
   }
+
+  public getLinkPicture(id: number) {
+    return `https://localhost:5001/api/articles/image/${id}`;
+  }
 }

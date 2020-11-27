@@ -53,6 +53,7 @@ export const MY_DATE_FORMATS = {
     AppComponent,
     MainPageComponent,
     ArticlesListComponent,
+    ArticleComponent,
   ],
   entryComponents: [AddRecordFormComponent, ChangePasswordFormComponent],
   imports: [

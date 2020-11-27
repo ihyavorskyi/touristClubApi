@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MediatR;
-using Microsoft.AspNetCore.Http;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using System.Threading.Tasks;
 using TouristClub.API.Features.Queries.ArticlesCRUD;
 
 namespace TouristClub.API.Controllers
@@ -34,6 +31,15 @@ namespace TouristClub.API.Controllers
             var getQuery = new GetArticleById.Query(id);
             var res = await _mediator.Send(getQuery);
             return Ok(res);
+        }
+
+        [HttpGet("image/{id}")]
+        public async Task<IActionResult> GetImage(int Id)
+        {
+            var query = new GetArticlePhoto.Query(Id);
+            var res = await _mediator.Send(query);
+
+            return new FileStreamResult(new FileStream(res, FileMode.Open), "image/jpeg");
         }
     }
 }
