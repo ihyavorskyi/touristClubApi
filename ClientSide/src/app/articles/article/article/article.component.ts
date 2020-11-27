@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ArticleComponent implements OnInit {
   article: Article;
   articleId: number;
+  value = 'Clear me';
 
   constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
 
@@ -21,10 +22,14 @@ export class ArticleComponent implements OnInit {
       if (params.id) {
         this.articleId = params.id;
         this.articleService.getArticle(this.articleId).subscribe(ar => {
-          console.log('GOT id = ' + ar.id +' / title = '+ ar.title);
+          console.log('GOT id = ' + ar.id + ' / title = ' + ar.title);
           this.article = ar;
         });
       }
     });
+  }
+
+  sendComment(item) {
+    alert(item.value);
   }
 }
