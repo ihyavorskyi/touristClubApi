@@ -1,12 +1,13 @@
-﻿using TouristClubApi.Data;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System.Threading;
 using System.Threading.Tasks;
+using TouristClubApi.Data;
+using TouristClubApi.Helpers;
 
 namespace TouristClub.API.Features.Commands.Roles
 {
-    public class DeleteRole
+    public class CreateRole
     {
         public class Command : IRequest<bool>
         {
@@ -18,7 +19,7 @@ namespace TouristClub.API.Features.Commands.Roles
             }
         }
 
-        public class Handler : IRequestHandler<DeleteRole.Command, bool>
+        public class Handler : IRequestHandler<CreateRole.Command, bool>
         {
             private readonly RoleManager<IdentityRole> _roleManager;
             private readonly AppDbContext _context;
@@ -31,16 +32,9 @@ namespace TouristClub.API.Features.Commands.Roles
 
             public async Task<bool> Handle(Command command, CancellationToken cancellationToken)
             {
-                IdentityRole role = await _roleManager.FindByNameAsync(command.Name);
-                if (role != null)
-                {
-                    IdentityResult result = await _roleManager.DeleteAsync(role);
-                    if (result.Succeeded)
-                    {
-                        return true;
-                    }
-                }
-                return false;
+                ValidationHelper.IsRoleExist(command.Name, _context);
+                await _roleManager.CreateAsync(new IdentityRole(command.Name));
+                return true;
             }
         }
     }

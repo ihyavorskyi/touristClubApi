@@ -1,7 +1,6 @@
-﻿using TouristClubApi.Data;
-using TouristClubApi.Data.Models;
+﻿using System.Linq;
+using TouristClubApi.Data;
 using TouristClubApi.Exceptions;
-using System.Linq;
 
 namespace TouristClubApi.Helpers
 {

@@ -1,11 +1,11 @@
-﻿using TouristClub.API.Data.DTOs;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using TouristClub.API.Data.DTOs;
 using TouristClub.API.Features.Commands.UserCRUD.ChangeUserPassword;
 using TouristClub.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword;
 using TouristClub.API.Features.Queries.UserCRUD.GetShortUserById;
 using TouristClub.API.Features.Queries.UserCRUD.GetUserById;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace TouristClub.API.Controllers
 {

@@ -1,5 +1,4 @@
-﻿using TouristClubApi.Data.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TouristClub.API.Data.Models;
 

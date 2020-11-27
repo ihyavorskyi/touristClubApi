@@ -1,11 +1,11 @@
-﻿using TouristClub.API.Data.Models.Auth;
-using TouristClub.API.Services.Interfaces;
-using TouristClubApi.Data;
-using TouristClubApi.Data.Models;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System.Threading;
 using System.Threading.Tasks;
+using TouristClub.API.Data.Models.Auth;
+using TouristClub.API.Services.Interfaces;
+using TouristClubApi.Data;
+using TouristClubApi.Data.Models;
 
 namespace TouristClub.API.Features.Commands.Auth
 {

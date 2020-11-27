@@ -1,9 +1,9 @@
-﻿using TouristClub.API.Data.Models.Auth;
-using TouristClub.API.Services.Interfaces;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
+using TouristClub.API.Data.Models.Auth;
+using TouristClub.API.Services.Interfaces;
 
 namespace TouristClub.API.Middlewares
 {

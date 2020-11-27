@@ -1,7 +1,4 @@
-﻿using TouristClubApi.Data.Models;
-using System.Collections.Generic;
-
-namespace TouristClub.API.Data.DTOs
+﻿namespace TouristClub.API.Data.DTOs
 {
     public class UserDto
     {
@@ -10,7 +7,6 @@ namespace TouristClub.API.Data.DTOs
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public int? DepartmentId { get; set; }
         public string PhoneNumber { get; set; }
         public int Age { get; set; }
     }

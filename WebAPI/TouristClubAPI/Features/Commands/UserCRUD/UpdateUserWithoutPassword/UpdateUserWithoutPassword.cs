@@ -1,11 +1,11 @@
-﻿using TouristClub.API.Data.DTOs;
-using TouristClubApi.Data.Models;
-using TouristClubApi.Exceptions;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TouristClub.API.Data.DTOs;
+using TouristClubApi.Data.Models;
+using TouristClubApi.Exceptions;
 
 namespace TouristClub.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword
 {

@@ -1,11 +1,11 @@
-﻿using TouristClub.API.Data.DTOs;
-using TouristClubApi.Data;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using TouristClub.API.Data.DTOs;
+using TouristClubApi.Data;
 
 namespace TouristClub.API.Features.Queries.Roles
 {

@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TouristClub.API.Features.Queries;
+using TouristClub.API.Data.Models;
+using TouristClub.API.Features.Commands.CategoryCRUD;
 
 namespace TouristClub.API.Controllers
 {
@@ -20,10 +21,10 @@ namespace TouristClub.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> CreateAsync()
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(Category category)
         {
-            var getQuery = new GetAllCategories.Query();
+            var getQuery = new CreateCategory.Command(category);
             var res = await _mediator.Send(getQuery);
             return Ok(res);
         }
