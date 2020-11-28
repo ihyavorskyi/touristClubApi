@@ -57,7 +57,6 @@
   clear: both;
   display: table;
 }
-
 //
 
 .author_image {
@@ -129,9 +128,7 @@
   caret-color: #ffa52e;
 }
 
-
-
-
+//animated button
 .button {
   vertical-align: middle;
   display: inline-block;
@@ -174,6 +171,7 @@
   right: 0;
 }
 
-.mat-form-field {
-  margin-right: 12px;
+//paginator
+.paginator_color{
+  background-color:#f7e4b9;
 }

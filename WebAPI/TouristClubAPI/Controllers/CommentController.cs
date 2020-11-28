@@ -22,11 +22,6 @@ namespace TouristClub.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] CreateCommentRequest comment)
         {
-            Console.WriteLine(comment.Id);
-            Console.WriteLine(comment.Text);
-            Console.WriteLine(comment.ArticleId);
-            Console.WriteLine(comment.AuthorId);
-
             var getQuery = new CreateComment.Command(comment);
             var res = await _mediator.Send(getQuery);
             return Ok(true);

@@ -31,14 +31,15 @@
                         <img src="../../../../assets/world_map.jpg" alt="" class="avatar">
                         {{c.author.lastName}} {{c.author.firstName}} {{c.date | date:'shortDate'}}
                     </h1>
-                    <p>
-                        {{c.text}}
-                    </p>
+                    <p>{{c.text}}</p>
                 </div>
-                <mat-paginator [length]="this.article.comments.length" [pageSize]="pageSize"
-                    [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
-                </mat-paginator>
+                <div *ngIf="this.needPaginator">
+                    <mat-paginator class="paginator_color" [length]="this.article.comments.length" [pageSize]="pageSize"
+                        [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
+                    </mat-paginator>
+                </div>
             </div>
+
         </div>
 
     </div>

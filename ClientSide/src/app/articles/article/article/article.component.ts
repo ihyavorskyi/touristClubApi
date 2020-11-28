@@ -17,11 +17,11 @@ import { PageEvent } from '@angular/material/paginator';
 export class ArticleComponent implements OnInit {
   article: Article;
   articleId: number;
-  text: string;
   comments: Comment[];
+  needPaginator: boolean;
 
   length: number;
-  pageSize = 2;
+  pageSize = 0;
   pageSizeOptions: number[] = [1, 3, 5, 10];
 
   constructor(private route: ActivatedRoute, private articleService: ArticleService,
@@ -33,9 +33,7 @@ export class ArticleComponent implements OnInit {
         this.articleId = params.id;
         this.articleService.getArticle(this.articleId).subscribe(ar => {
           this.article = ar;
-          this.length = this.article.comments.length;
-          this.comments = this.article.comments.slice(0, 2);
-          console.log(this.article);
+          this.areAnyComments();
         });
       }
     });
@@ -60,12 +58,27 @@ export class ArticleComponent implements OnInit {
   }
 
   onPageChange(event: PageEvent) {
-    console.log(event);
     const startIndex = event.pageIndex * event.pageSize;
     let endIndex = startIndex + event.pageSize;
     if (endIndex > this.article.comments.length) {
       endIndex = this.article.comments.length;
     }
     this.comments = this.article.comments.slice(startIndex, endIndex);
+  }
+
+  areAnyComments() {
+    if (this.article.comments) {
+      this.length = this.article.comments.length;
+
+      switch (this.article.comments.length) {
+        case 2: this.pageSize = 2; break;
+        case 3: this.pageSize = 3; break;
+        case 4: this.pageSize = 4; break;
+        default: this.pageSize = 5; break;
+      }
+
+      this.comments = this.article.comments.slice(0, this.pageSize);
+      this.needPaginator = true;
+    }
   }
 }
