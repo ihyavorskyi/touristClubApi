@@ -18,7 +18,6 @@ export class MyRecordsComponent implements OnInit {
     this.accountService.getUser(uId).subscribe(value => {
       console.log('user got');
       this.user = value;
-      this.records = value.records;
       console.log(this.records);
     });
   }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Comment } from '../../data/models/comment';
+import { sendComment } from '../../data/models/sendComment';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +14,7 @@ export class CommentService {
     constructor(private http: HttpClient) {
     }
 
-    addRecord(comment: Comment): Observable<boolean> {
+    addRecord(comment: sendComment): Observable<boolean> {
         console.log(comment);
         return this.http.post<boolean>(this.url, comment);
     }

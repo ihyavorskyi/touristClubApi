@@ -56,9 +56,6 @@ export class SettingsComponent implements OnInit {
       userName: this.pageForm.get('userName').value,
       phoneNumber: this.pageForm.get('phoneNumber').value,
       id: this.user.id,
-      departmentId: this.user.departmentId,
-      department: null,
-      records: null
     };
     this.accountService.updateUser(model).subscribe(value => {
       if (value) {

@@ -60,7 +60,7 @@ namespace TouristClub.API.Features.Queries.ArticlesCRUD
                         Id = com.Id,
                         Text = com.Text,
                         Date = com.Date,
-                        Author = new NameUserDto
+                        Author = new User
                         {
                             Id = com.User.Id,
                             FirstName = com.User.FirstName,

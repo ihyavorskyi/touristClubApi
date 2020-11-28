@@ -4,70 +4,43 @@
         <div class="row">
             <div class="column">
                 <img src="../../../../assets/avatar.jpg" alt="" class="author_image">
-                <h1 class="author_info">{{this.article.Author.firstName}} Яворський Ігор</h1>
+                <h1 class="author_info">{{this.article.author.lastName}} {{this.article.author.firstName}}</h1>
             </div>
             <div class="column">
-                <h1 class="article_title">
-                    TitleTitleTitleTitleeTitleTitTitleTitleTitleTitTitleTitleTitleTitleeTitleTitTitleTitleTitleTit
-                </h1>
+                <h1 class="article_title"> {{this.article.title}}</h1>
             </div>
         </div>
         <div class="article_body">
-            <img src="../../../../assets/world_map.jpg" alt="" class="article_body image">
-            <div class="article_body text">
-                <p>
-                    texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
-                </p>
-                <p>
-                    texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
-                </p>
-            </div>
+            <img [src]="getLinkPicture(this.articleId)" alt="" class="article_body image">
+            <p [innerHTML]="this.article.text" class="article_body text"></p>
         </div>
 
-        <div class="comments">
-            <h2>Коментарі</h2>
+        <div class="comments_block">
 
+            <h2>Коментарі</h2>
             <mat-form-field class="example-full-width">
                 <mat-label>Залиште свій коментар</mat-label>
-                <textarea rows="4" matInput placeholder="Хм, що ж мені написати?.." class="textarea_color" #comment_text></textarea>
+                <textarea rows="4" matInput placeholder="Хм, що ж мені написати?.." class="textarea_color"
+                    #comment_text></textarea>
             </mat-form-field>
-            <button class="button" (click)="sendComment(comment_text)"><span>Надіслати</span></button>
+            <button class="button" (click)="addComment(comment_text)"><span>Надіслати</span></button>
 
-<!-- 
-            <div class="comment">
-                <h1 class="texth1">
-                    <img src="../../../../assets/world_map.jpg" alt="" class="avatar">
-                    Яворський Ігор 22.11.1111
-                </h1>
-                <p>
-                    texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
-                </p>
+            <div *ngIf="this.article.comments">
+                <div class="comment" *ngFor="let c of this.comments">
+                    <h1 class="texth1">
+                        <img src="../../../../assets/world_map.jpg" alt="" class="avatar">
+                        {{c.author.lastName}} {{c.author.firstName}} {{c.date | date:'shortDate'}}
+                    </h1>
+                    <p>
+                        {{c.text}}
+                    </p>
+                </div>
+                <mat-paginator [length]="this.article.comments.length" [pageSize]="pageSize"
+                    [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
+                </mat-paginator>
             </div>
-
-
-            <div class="comment">
-                <h1 class="texth1">
-                    <img src="../../../../assets/world_map.jpg" alt="" class="avatar">
-                    Яворський Ігор 22.11.1111
-                </h1>
-                <p>
-                    texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
-                </p>
-            </div>
-
-
-            <div class="comment">
-                <h1 class="texth1">
-                    <img src="../../../../assets/world_map.jpg" alt="" class="avatar">
-                    Яворський Ігор 22.11.1111
-                </h1>
-                <p>
-                    texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
-                </p>
-            </div> -->
-
-
         </div>
+
     </div>
 </div>
 <app-footer></app-footer>
