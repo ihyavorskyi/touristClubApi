@@ -8,6 +8,7 @@ using TouristClub.API.Data.DTOs.ArticleDTOs;
 using TouristClub.API.Data.DTOs.CategoryDTOs;
 using TouristClub.API.Data.DTOs.CommentDTOs;
 using TouristClub.API.Data.DTOs.UserDTOs;
+using TouristClub.API.Data.Models;
 using TouristClubApi.Data;
 using TouristClubApi.Data.Models;
 
@@ -43,16 +44,16 @@ namespace TouristClub.API.Features.Queries.ArticlesCRUD
                     Id = ar.Id,
                     Title = ar.Title,
                     Text = ar.Text,
-                    Author = new NameUserDto
+                    Author = new User
                     {
                         Id = ar.User.Id,
                         FirstName = ar.User.FirstName,
                         LastName = ar.User.LastName
                     },
-                    Category = new CategoryDto
+                    Topic = new Topic
                     {
-                        Id = ar.Category.Id,
-                        Name = ar.Category.Name
+                        Id = ar.Topic.Id,
+                        Name = ar.Topic.Name
                     },
                     Comments = ar.Comments.Select(com => new CommentDto
                     {

@@ -11,7 +11,6 @@ namespace TouristClub.API.Data.Models
 
         //nav prop
 
-        public virtual ICollection<Article> Articles { get; set; }
         public virtual ICollection<Excursion> Excursions { get; set; }
     }
 }

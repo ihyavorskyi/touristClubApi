@@ -35,7 +35,7 @@ namespace TouristClub.API.Features.Queries.ArticlesCRUD
             {
                 var article = await _context.Articles.Where(ar => ar.Id == request.Id).FirstOrDefaultAsync();
                 if (article == null)
-                    throw new NotFoundException("Department not found");
+                    throw new NotFoundException("Article not found");
 
                 return article.Image;
             }

@@ -1,7 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.IO;
 using System.Threading.Tasks;
+using TouristClub.API.Data.DTOs.CommentDTOs;
+using TouristClub.API.Features.Commands.CommentCRUD;
 using TouristClub.API.Features.Queries.ArticlesCRUD;
 
 namespace TouristClub.API.Controllers

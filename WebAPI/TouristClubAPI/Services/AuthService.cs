@@ -28,7 +28,7 @@ namespace TouristClub.API.Services
         {
             var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration["JwtKey"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            var expiryDate = DateTime.UtcNow.AddMinutes(2);
+            var expiryDate = DateTime.UtcNow.AddMinutes(120);
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(new[]

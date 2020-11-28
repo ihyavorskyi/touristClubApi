@@ -2,6 +2,8 @@
 using TouristClub.API.Data.DTOs.CategoryDTOs;
 using TouristClub.API.Data.DTOs.CommentDTOs;
 using TouristClub.API.Data.DTOs.UserDTOs;
+using TouristClub.API.Data.Models;
+using TouristClubApi.Data.Models;
 
 namespace TouristClub.API.Data.DTOs.ArticleDTOs
 {
@@ -13,9 +15,9 @@ namespace TouristClub.API.Data.DTOs.ArticleDTOs
         public string Image { get; set; }
 
         //nav props
-        public CategoryDto Category { get; set; }
+        public Topic Topic { get; set; }
 
-        public NameUserDto Author { get; set; }
+        public User Author { get; set; }
 
         public virtual ICollection<CommentDto> Comments { get; set; }
     }

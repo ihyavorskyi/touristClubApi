@@ -1,12 +1,14 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
+using TouristClub.API.Data.DTOs.CommentDTOs;
 using TouristClub.API.Data.Models;
 using TouristClub.API.Features.Commands.CommentCRUD;
 
 namespace TouristClub.API.Controllers
 {
-    [Route("api/commments")]
+    [Route("api/comments")]
     [ApiController]
     public class CommentController : ControllerBase
     {
@@ -18,11 +20,11 @@ namespace TouristClub.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(Comment comment)
+        public async Task<IActionResult> CreateAsync([FromBody] CreateCommentRequest comment)
         {
             var getQuery = new CreateComment.Command(comment);
             var res = await _mediator.Send(getQuery);
-            return Ok(res);
+            return Ok(true);
         }
     }
 }
