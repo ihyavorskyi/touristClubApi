@@ -88,43 +88,28 @@
   font-family: inherit;
   padding: 30px;
 
-  h2{
+  h2 {
     font-size: 30px;
     font-style: normal;
-  margin: 0;
+    margin: 0;
 
   }
 }
 
 .comment {
   width: 100%;
-  word-wrap: break-word;
-  text-indent: 10%;
 
-  h1 {
-    margin: -18px -12%;
+  p {
+    font-size: 16px;
+    word-wrap: break-word;
   }
-  p{
-    padding-bottom: 30px;
-    font-size: 18px;
-  }
-}
-
-.avatar {
-  width: 6%;
-  height: 60px;
-  border-radius: 3px;
-}
-
-.texth1{
-  font-size: 20px;
 }
 
 .example-full-width {
   width: 100%;
 }
 
-.textarea_color{
+.textarea_color {
   caret-color: #ffa52e;
 }
 
@@ -143,7 +128,7 @@
   transition: all 0.5s;
   cursor: pointer;
   margin-bottom: 40px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .button span {
@@ -172,6 +157,19 @@
 }
 
 //paginator
-.paginator_color{
-  background-color:#f7e4b9;
+.paginator_color {
+  background-color: #f7e4b9;
+}
+
+
+//comment card
+.comment_card {
+  max-width: 100%;
+  font-family: inherit;
+  margin: 10px;
+}
+
+.comment_image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
 }

@@ -1,3 +1,4 @@
+import { ExursionsComponent } from './excursion/exursions/exursions.component';
 import { ArticlesListComponent } from './articles/articles-list/articles-list/articles-list.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -32,6 +33,7 @@ import { AccountModule } from './account/account.module';
 import { ChangePasswordFormComponent } from './account/change-password-form/change-password-form.component';
 import { ArticleComponent } from './articles/article/article/article.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -55,6 +57,7 @@ export const MY_DATE_FORMATS = {
     MainPageComponent,
     ArticlesListComponent,
     ArticleComponent,
+    ExursionsComponent,
   ],
   entryComponents: [AddRecordFormComponent, ChangePasswordFormComponent],
   imports: [
@@ -62,6 +65,7 @@ export const MY_DATE_FORMATS = {
     AppRoutingModule,
     HttpClientModule,
     MatPaginatorModule,
+    MatCardModule,
     LoginModule,
     RouterModule.forRoot(
       [
@@ -76,6 +80,7 @@ export const MY_DATE_FORMATS = {
         { path: 'main', component: MainPageComponent },
         { path: 'articles', component: ArticlesListComponent },
         { path: 'article/:id', component: ArticleComponent },
+        { path: 'excursions', component: ExursionsComponent },
         { path: '**', redirectTo: 'main' }
 
       ]),

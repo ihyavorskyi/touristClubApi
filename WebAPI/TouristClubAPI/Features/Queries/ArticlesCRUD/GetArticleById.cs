@@ -64,7 +64,8 @@ namespace TouristClub.API.Features.Queries.ArticlesCRUD
                         {
                             Id = com.User.Id,
                             FirstName = com.User.FirstName,
-                            LastName = com.User.LastName
+                            LastName = com.User.LastName,
+                            UserName = com.User.UserName
                         }
                     }).ToList()
                 }).FirstOrDefaultAsync();

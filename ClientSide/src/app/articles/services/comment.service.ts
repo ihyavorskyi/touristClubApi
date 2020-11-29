@@ -14,7 +14,7 @@ export class CommentService {
     constructor(private http: HttpClient) {
     }
 
-    addRecord(comment: sendComment): Observable<boolean> {
+    addComment(comment: sendComment): Observable<boolean> {
         console.log(comment);
         return this.http.post<boolean>(this.url, comment);
     }

@@ -47,7 +47,7 @@ export class ArticleComponent implements OnInit {
         authorId: localStorage.getItem("uId"),
         articleId: Number(this.articleId)
       };
-      this.commentService.addRecord(comment).subscribe(value => {
+      this.commentService.addComment(comment).subscribe(value => {
         console.log(value);
       });
     }
