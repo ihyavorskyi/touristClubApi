@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using TouristClub.API.Data.DTOs.CategoryDTOs;
 using TouristClub.API.Data.DTOs.CommentDTOs;
-using TouristClub.API.Data.DTOs.UserDTOs;
 using TouristClub.API.Data.Models;
 using TouristClubApi.Data.Models;
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TouristClub.API.Data.DTOs.CategoryDTOs
+﻿namespace TouristClub.API.Data.DTOs.CategoryDTOs
 {
     public class CategoryDto
     {

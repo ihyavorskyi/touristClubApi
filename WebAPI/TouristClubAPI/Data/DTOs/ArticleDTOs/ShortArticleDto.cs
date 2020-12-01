@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TouristClub.API.Data.Models;
+﻿using TouristClub.API.Data.Models;
 
 namespace TouristClub.API.Data.DTOs
 {

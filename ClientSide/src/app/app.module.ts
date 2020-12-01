@@ -34,6 +34,7 @@ import { ChangePasswordFormComponent } from './account/change-password-form/chan
 import { ArticleComponent } from './articles/article/article/article.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -66,6 +67,7 @@ export const MY_DATE_FORMATS = {
     HttpClientModule,
     MatPaginatorModule,
     MatCardModule,
+    MatTabsModule,
     LoginModule,
     RouterModule.forRoot(
       [

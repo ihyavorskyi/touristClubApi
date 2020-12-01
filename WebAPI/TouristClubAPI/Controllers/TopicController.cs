@@ -1,36 +1,34 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TouristClub.API.Data.Models;
-using TouristClub.API.Features.Commands.CategoryCRUD;
+using TouristClub.API.Features.Commands.TopicCRUD;
 
 namespace TouristClub.API.Controllers
 {
-    [EnableCors]
-    [Route("api/categories")]
+    [Route("api/topics")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class TopicController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public CategoryController(IMediator mediator)
+        public TopicController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromBody] Category category)
+        public async Task<IActionResult> CreateAsync([FromBody] Topic topic)
         {
-            var getQuery = new CreateCategory.Command(category);
+            var getQuery = new CreateTopic.Command(topic);
             var res = await _mediator.Send(getQuery);
             return Ok(res);
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateAsync([FromBody] Category category)
+        public async Task<IActionResult> UpdateAsync([FromBody] Topic topic)
         {
-            var command = new UpdateCategory.Command(category);
+            var command = new UpdateTopic.Command(topic);
             var res = await _mediator.Send(command);
             return Ok(res);
         }
@@ -38,7 +36,7 @@ namespace TouristClub.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var getQuery = new DeleteCategory.Command(id);
+            var getQuery = new DeleteTopic.Command(id);
             var res = await _mediator.Send(getQuery);
             return Ok(res);
         }

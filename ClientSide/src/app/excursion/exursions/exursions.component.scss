@@ -1,7 +1,7 @@
 //conteiner
 .column {
   float: left;
-  width: 50%;
+  width: 33%;
   padding: 0px;
 }
 
@@ -12,13 +12,13 @@
 }
 //
 
-
 .example-card {
   max-width: 600px;
   margin: 0 auto;
+  margin: 5%;
+  word-wrap: break-word;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.tabs{
+  margin-top: 80px;
 }
