@@ -2,7 +2,6 @@
 <div class="background">
     <div class="page">
         <div class="content">
-
             <div class="row">
                 <div class="column">
                     <img src="../../../../assets/avatar.jpg" alt="" class="author_image">
@@ -22,7 +21,7 @@
                 <h2>Коментарі</h2>
                 <mat-form-field class="example-full-width">
                     <mat-label>Залиште свій коментар</mat-label>
-                    <textarea rows="4" matInput placeholder="Хм, що ж мені написати?.." class="textarea_color"
+                    <textarea matInput placeholder="Хм, що ж мені написати?.." class="textarea"
                         #comment_text></textarea>
                 </mat-form-field>
                 <button class="button" (click)="addComment(comment_text)"><span>Надіслати</span></button>

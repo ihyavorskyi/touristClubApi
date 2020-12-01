@@ -114,8 +114,8 @@
   width: 100%;
 }
 
-.textarea_color {
-  caret-color: #ffa52e;
+.textarea {
+  min-height: 70px;
 }
 
 //animated button
@@ -164,6 +164,10 @@
 //paginator
 .paginator_color {
   background-color: #f7e4b9;
+}
+
+::ng-deep .mat-paginator-page-size-label {
+  font-size: 0;
 }
 
 

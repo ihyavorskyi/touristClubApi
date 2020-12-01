@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TouristClub.API.Data.Models;
 using TouristClub.API.Features.Commands.CategoryCRUD;
+using TouristClub.API.Features.Queries.CategoryCRUD;
 
 namespace TouristClub.API.Controllers
 {
@@ -17,6 +18,14 @@ namespace TouristClub.API.Controllers
         public CategoryController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAsync()
+        {
+            var getQuery = new GetAllCategory.Query();
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
         }
 
         [HttpPost]
@@ -38,8 +47,8 @@ namespace TouristClub.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var getQuery = new DeleteCategory.Command(id);
-            var res = await _mediator.Send(getQuery);
+            var command = new DeleteCategory.Command(id);
+            var res = await _mediator.Send(command);
             return Ok(res);
         }
     }

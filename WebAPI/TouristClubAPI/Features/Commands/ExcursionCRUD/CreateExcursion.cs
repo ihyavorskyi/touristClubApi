@@ -1,24 +1,26 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Identity;
 using System.Threading;
 using System.Threading.Tasks;
 using TouristClub.API.Data.Models;
 using TouristClubApi.Data;
+using TouristClubApi.Helpers;
 
-namespace TouristClub.API.Features.Commands.TopicCRUD
+namespace TouristClub.API.Features.Commands.ExcursionCRUD
 {
-    public class CreateTopic
+    public class CreateExcursion
     {
         public class Command : IRequest<bool>
         {
-            public Topic Topic { get; set; }
+            public Excursion Excursion { get; set; }
 
-            public Command(Topic topic)
+            public Command(Excursion excursion)
             {
-                Topic = topic;
+                Excursion = excursion;
             }
         }
 
-        public class Handler : IRequestHandler<CreateTopic.Command, bool>
+        public class Handler : IRequestHandler<CreateExcursion.Command, bool>
         {
             private readonly AppDbContext _context;
 
@@ -29,7 +31,8 @@ namespace TouristClub.API.Features.Commands.TopicCRUD
 
             public async Task<bool> Handle(Command command, CancellationToken cancellationToken)
             {
-                await _context.Topics.AddAsync(command.Topic);
+                //ValidationHelper.IsRoleExist(command.Name, _context);
+                await _context.Excursions.AddAsync(command.Excursion);
                 await _context.SaveChangesAsync();
                 return true;
             }

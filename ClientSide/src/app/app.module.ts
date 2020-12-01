@@ -32,9 +32,6 @@ import { CabinetNavComponent } from './navigation/cabinet-nav/cabinet-nav.compon
 import { AccountModule } from './account/account.module';
 import { ChangePasswordFormComponent } from './account/change-password-form/change-password-form.component';
 import { ArticleComponent } from './articles/article/article/article.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatCardModule } from '@angular/material/card';
-import { MatTabsModule } from '@angular/material/tabs';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -65,9 +62,6 @@ export const MY_DATE_FORMATS = {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatPaginatorModule,
-    MatCardModule,
-    MatTabsModule,
     LoginModule,
     RouterModule.forRoot(
       [
