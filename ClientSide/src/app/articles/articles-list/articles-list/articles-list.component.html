@@ -1,21 +1,23 @@
 <app-header></app-header>
 <div class="page">
+  <div class="content">
 
-  <div *ngIf="articles">
-    <div class="article_block" *ngFor="let a of articles">
-      <div class="article_body" (click)=" goToArticle(a.id)">
-        <h1 class="article_title">{{a.title}}</h1>
-      </div>
-      <div class="border_info">
-        <div class="row">
-          <div class="column">
-            <img [src]="getLinkPicture(a.id)" alt="" class="article_image">
-          </div>
-          <div class="column">
-            <h1 class="description_title">Короткий зміст</h1>
-            <p class="description_text"> {{a.description}}</p>
-            <h1 class="category_title">Тематика</h1>
-            <p class="category_text">{{a.topic.name}}</p>
+    <div *ngIf="articles">
+      <div class="article_block" *ngFor="let a of articles">
+        <div class="article_body" (click)=" goToArticle(a.id)">
+          <h1 class="article_title">{{a.title}}</h1>
+        </div>
+        <div class="border_info">
+          <div class="row">
+            <div class="column">
+              <img [src]="getLinkPicture(a.id)" alt="" class="article_image">
+            </div>
+            <div class="column">
+              <h1 class="description_title">Короткий зміст</h1>
+              <p class="description_text"> {{a.description}}</p>
+              <h1 class="category_title">Тематика</h1>
+              <p class="category_text">{{a.topic.name}}</p>
+            </div>
           </div>
         </div>
       </div>

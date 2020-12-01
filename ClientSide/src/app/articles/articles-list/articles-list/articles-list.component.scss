@@ -95,3 +95,7 @@
   width: 550px;
   font-size: 22px;
 }
+
+.content {
+  min-height: calc(100vh - 70px);
+}

@@ -1,56 +1,57 @@
 <app-header></app-header>
 <div class="background">
     <div class="page">
-        <div class="row">
-            <div class="column">
-                <img src="../../../../assets/avatar.jpg" alt="" class="author_image">
-                <h1 class="author_info">{{this.article.author.lastName}} {{this.article.author.firstName}}</h1>
-            </div>
-            <div class="column">
-                <h1 class="article_title"> {{this.article.title}}</h1>
-            </div>
-        </div>
-        <div class="article_body">
-            <img [src]="getLinkPicture(this.articleId)" alt="" class="article_body image">
-            <p [innerHTML]="this.article.text" class="article_body text"></p>
-        </div>
+        <div class="content">
 
-        <div class="comments_block">
-
-            <h2>Коментарі</h2>
-            <mat-form-field class="example-full-width">
-                <mat-label>Залиште свій коментар</mat-label>
-                <textarea rows="4" matInput placeholder="Хм, що ж мені написати?.." class="textarea_color"
-                    #comment_text></textarea>
-            </mat-form-field>
-            <button class="button" (click)="addComment(comment_text)"><span>Надіслати</span></button>
-
-            <div *ngIf="this.article.comments">
-                <div class="comment" *ngFor="let c of this.comments">
-                    <mat-card class="comment_card">
-                        <mat-card-header>
-                            <div mat-card-avatar class="comment_image"></div>
-                            <mat-card-title>{{c.author.userName}}</mat-card-title>
-                            <mat-card-subtitle>{{c.date | date:'shortDate'}}</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <p>{{c.text}} </p>
-                        </mat-card-content>
-                        <mat-card-actions>
-                            <button mat-button>LIKE</button>
-                            <button mat-button>SHARE</button>
-                        </mat-card-actions>
-                    </mat-card>
+            <div class="row">
+                <div class="column">
+                    <img src="../../../../assets/avatar.jpg" alt="" class="author_image">
+                    <h1 class="author_info">{{this.article.author.lastName}} {{this.article.author.firstName}}</h1>
                 </div>
-                <div *ngIf="this.needPaginator">
-                    <mat-paginator class="paginator_color" [length]="this.article.comments.length" [pageSize]="pageSize"
-                        [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
-                    </mat-paginator>
+                <div class="column">
+                    <h1 class="article_title"> {{this.article.title}}</h1>
                 </div>
             </div>
+            <div class="article_body">
+                <img [src]="getLinkPicture(this.articleId)" alt="" class="article_body image">
+                <p [innerHTML]="this.article.text" class="article_body text"></p>
+            </div>
 
+            <div class="comments_block">
+
+                <h2>Коментарі</h2>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Залиште свій коментар</mat-label>
+                    <textarea rows="4" matInput placeholder="Хм, що ж мені написати?.." class="textarea_color"
+                        #comment_text></textarea>
+                </mat-form-field>
+                <button class="button" (click)="addComment(comment_text)"><span>Надіслати</span></button>
+
+                <div *ngIf="this.article.comments">
+                    <div class="comment" *ngFor="let c of this.comments">
+                        <mat-card class="comment_card">
+                            <mat-card-header>
+                                <div mat-card-avatar class="comment_image"></div>
+                                <mat-card-title>{{c.author.userName}}</mat-card-title>
+                                <mat-card-subtitle>{{c.date | date:'shortDate'}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>{{c.text}} </p>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button>LIKE</button>
+                                <button mat-button>SHARE</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                    <div *ngIf="this.needPaginator">
+                        <mat-paginator class="paginator_color" [length]="this.article.comments.length"
+                            [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
 </div>
 <app-footer></app-footer>

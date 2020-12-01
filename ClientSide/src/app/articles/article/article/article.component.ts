@@ -21,7 +21,7 @@ export class ArticleComponent implements OnInit {
   needPaginator: boolean;
 
   length: number;
-  pageSize = 0;
+  pageSize = 3;
   pageSizeOptions: number[] = [1, 3, 5, 10];
 
   constructor(private route: ActivatedRoute, private articleService: ArticleService,
@@ -69,13 +69,12 @@ export class ArticleComponent implements OnInit {
   areAnyComments() {
     if (this.article.comments) {
       this.length = this.article.comments.length;
-
+/* 
       switch (this.article.comments.length) {
         case 2: this.pageSize = 2; break;
         case 3: this.pageSize = 3; break;
-        case 4: this.pageSize = 4; break;
-        default: this.pageSize = 5; break;
-      }
+        default: this.pageSize = 1; break;
+      } */
 
       this.comments = this.article.comments.slice(0, this.pageSize);
       this.needPaginator = true;

@@ -9,6 +9,10 @@
   backdrop-filter: blur(4px);
 }
 
+.content {
+  min-height: calc(100vh - 70px);
+}
+
 .article_title {
   text-align: center;
   font-size: 50px;
@@ -57,6 +61,7 @@
   clear: both;
   display: table;
 }
+
 //
 
 .author_image {
