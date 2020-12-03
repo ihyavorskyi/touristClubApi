@@ -1,3 +1,5 @@
+import { MakeAReservationDialogComponent } from './excursion/makeAReservationDialog/makeAReservationDialog/makeAReservationDialog.component';
+import { ExcursionComponent } from './excursion/excursion/excursion/excursion.component';
 import { ExursionsComponent } from './excursion/exursions/exursions.component';
 import { ArticlesListComponent } from './articles/articles-list/articles-list/articles-list.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -56,6 +58,8 @@ export const MY_DATE_FORMATS = {
     ArticlesListComponent,
     ArticleComponent,
     ExursionsComponent,
+    ExcursionComponent,
+    MakeAReservationDialogComponent
   ],
   entryComponents: [AddRecordFormComponent, ChangePasswordFormComponent],
   imports: [
@@ -77,6 +81,7 @@ export const MY_DATE_FORMATS = {
         { path: 'articles', component: ArticlesListComponent },
         { path: 'article/:id', component: ArticleComponent },
         { path: 'excursions', component: ExursionsComponent },
+        { path: 'excursion/:id', component: ExcursionComponent },
         { path: '**', redirectTo: 'main' }
 
       ]),

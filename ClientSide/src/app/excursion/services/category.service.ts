@@ -17,8 +17,4 @@ export class CategoryService {
     getCategoriesWithExursions(): Observable<Category[]> {
         return this.http.get<Category[]>(this.url);
     }
-
-    /*     getArticle(id: number): Observable<Article> {
-            return this.http.get<Article>(this.url + `/${id}`);
-        } */
 }

@@ -1,10 +1,8 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
 using System.Threading;
 using System.Threading.Tasks;
 using TouristClub.API.Data.Models;
 using TouristClubApi.Data;
-using TouristClubApi.Helpers;
 
 namespace TouristClub.API.Features.Commands.ExcursionCRUD
 {
