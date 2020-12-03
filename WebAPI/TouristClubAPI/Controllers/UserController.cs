@@ -1,5 +1,9 @@
-﻿using MediatR;
+﻿using MedClinical.API.Features.Commands.UserCRUD;
+using MedClinical.API.Features.Commands.UserCRUD.DeleteUser;
+using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 using TouristClub.API.Data.DTOs;
 using TouristClub.API.Features.Commands.UserCRUD.ChangeUserPassword;
@@ -9,6 +13,7 @@ using TouristClub.API.Features.Queries.UserCRUD.GetUserById;
 
 namespace TouristClub.API.Controllers
 {
+    [EnableCors]
     [Route("api/users")]
     [ApiController]
     public class UserController : ControllerBase
@@ -36,6 +41,14 @@ namespace TouristClub.API.Controllers
             return Ok(res);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(UserDto model)
+        {
+            var updCommand = new CreateUser.Command(model);
+            var res = await _mediator.Send(updCommand);
+            return Ok(res);
+        }
+
         [HttpPut]
         public async Task<IActionResult> UpdateAsync(UserDto model)
         {
@@ -49,6 +62,15 @@ namespace TouristClub.API.Controllers
         {
             var changePassword = new ChangeUserPassword.Command(model);
             var res = await _mediator.Send(changePassword);
+            return Ok(res);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(string id)
+        {
+            Console.WriteLine(id);
+            var delCommand = new DeleteUser.Command(id);
+            var res = await _mediator.Send(delCommand);
             return Ok(res);
         }
     }
