@@ -68,7 +68,6 @@ namespace TouristClub.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(string id)
         {
-            Console.WriteLine(id);
             var delCommand = new DeleteUser.Command(id);
             var res = await _mediator.Send(delCommand);
             return Ok(res);

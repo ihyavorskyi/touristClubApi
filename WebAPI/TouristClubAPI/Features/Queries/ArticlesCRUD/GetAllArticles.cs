@@ -35,6 +35,7 @@ namespace TouristClub.API.Features.Queries.ArticlesCRUD
                         Description = ar.Description,
                         Topic = new Topic
                         {
+                            Id = ar.Topic.Id,
                             Name = ar.Topic.Name
                         }
                     }).ToListAsync();

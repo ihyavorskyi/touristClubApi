@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using TouristClubApi.Data.Models;
 
@@ -14,6 +15,7 @@ namespace TouristClub.API.Data.Models
         public string Description { get; set; }
         public string Text { get; set; }
         public string Image { get; set; }
+        public DateTime Date { get; set; }
 
         //nav props
 

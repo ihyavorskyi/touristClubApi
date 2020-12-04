@@ -1,0 +1,43 @@
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using TouristClub.API.Features.Queries.ArticlesCRUD;
+using TouristClubApi.Data;
+using TouristClubApi.Exceptions;
+
+namespace TouristClub.API.Features.Queries.ExcursionCRUD
+{
+    public class GetExcursionPhoto
+    {
+        public class Query : IRequest<string>
+        {
+            public int Id { get; set; }
+
+            public Query(int id)
+            {
+                Id = id;
+            }
+        }
+
+        public class Handler : IRequestHandler<GetExcursionPhoto.Query, string>
+        {
+            private readonly AppDbContext _context;
+
+            public Handler(AppDbContext context)
+            {
+                _context = context;
+            }
+
+            public async Task<string> Handle(Query request, CancellationToken cancellationToken)
+            {
+                var excursion = await _context.Excursions.Where(ar => ar.Id == request.Id).FirstOrDefaultAsync();
+                if (excursion == null)
+                    throw new NotFoundException("Article not found");
+
+                return excursion.Image;
+            }
+        }
+    }
+}
