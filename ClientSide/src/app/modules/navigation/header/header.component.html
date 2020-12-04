@@ -22,6 +22,9 @@
           <li>
             <a href="#" class="header-link">Про нас</a>
           </li>
+          <li>
+            <a [routerLink]="['/admin']" class="header-link">Адмін</a>
+          </li>
           <div class="login-buttons" *ngIf="!isUserAuthenticated">
             <li class="login-divider">
               <a [routerLink]="['/auth/login']" class="header-link auth-link">Вхід</a>
@@ -36,7 +39,7 @@
               <a (click)="logOut()" class="header-link logout">Вихід</a>
             </li>
           </div>
-          
+
         </ul>
       </nav>
     </div>
