@@ -6,4 +6,5 @@ export class User {
   public email: string;
   public phoneNumber: string;
   public age: number;
+  public role: string;
 }

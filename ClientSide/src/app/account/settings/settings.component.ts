@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {User} from '../../data/models/user';
 import {AccountService} from '../services/account.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -7,6 +7,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {AddRecordFormComponent} from '../../department-functionality/forms/add-record-form/add-record-form.component';
 import {ChangePasswordFormComponent} from '../change-password-form/change-password-form.component';
+import {EventEmitter} from 'events';
+import {HttpClient, HttpEventType} from '@angular/common/http';
 
 @Component({
   selector: 'app-settings',
@@ -18,6 +20,9 @@ export class SettingsComponent implements OnInit {
   pageForm: FormGroup;
   isFormEnabled = false;
   isDialogOpen = false;
+
+
+
 
   constructor(private fb: FormBuilder,
               private accountService: AccountService,
@@ -33,6 +38,8 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
 
   initForm(): void {
     this.pageForm = this.fb.group({
@@ -56,6 +63,7 @@ export class SettingsComponent implements OnInit {
       userName: this.pageForm.get('userName').value,
       phoneNumber: this.pageForm.get('phoneNumber').value,
       id: this.user.id,
+      role: null
     };
     this.accountService.updateUser(model).subscribe(value => {
       if (value) {
@@ -99,4 +107,5 @@ export class SettingsComponent implements OnInit {
       }
     });
   }
+
 }

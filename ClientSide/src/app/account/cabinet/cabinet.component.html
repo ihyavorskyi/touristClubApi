@@ -1,61 +1,93 @@
 <section class="cabinet-content">
-  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Особистий кабінет</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
-            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#">Sign out</a>
-      </li>
-    </ul>
-  </nav>
+  <app-cabinet-header></app-cabinet-header>
   <mat-drawer-container class="example-container cabinet-drawer-container">
     <mat-drawer mode="side" opened>
       <app-cabinet-nav></app-cabinet-nav>
     </mat-drawer>
     <mat-drawer-content>
       <div class="container-fluid">
-        <div class="row">
-          <main role="main" class="col-md-9 col-lg-10 px-md-4 main-comp">
-            <div class="chartjs-size-monitor"
-                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-              <div class="chartjs-size-monitor-expand"
-                   style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0;"></div>
-              </div>
-              <div class="chartjs-size-monitor-shrink"
-                   style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-              </div>
+        <main role="main" class="col-md-9 col-lg-10 px-md-4 main-comp">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Профіль</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
             </div>
-            <div
-              class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <h1 class="h2">Головна</h1>
-              <div class="btn-toolbar mb-2 mb-md-0">
+          </div>
+          <div class="row" *ngIf="user">
+            <div class="col-lg-4">
+              <div class="photo-block">
+                <img [src]="getLinkPicture()" id="user-photo" class="user-picture">
+              </div>
+              <h2 style="margin-bottom: 0px;
+               margin-top: 10px;">{{user.firstName}} {{user.lastName}}</h2>
+              <p *ngIf="user.department">Лікар-{{user.department.departmentName.slice(0, -2)}} </p>
+              <div class="upload-button-block">
+                <app-upload-helper (uploadFinished)="uploadFinished($event)"></app-upload-helper>
               </div>
             </div>
 
-            <form [formGroup]="pageForm">
-              <div class="form-group">
-                <label for="name">Імя</label>
-                <input type="text" class="form-control" id="name">
-              </div>
-              <div class="form-group">
-                <label for="surname">Прізвище</label>
-                <input type="text" class="form-control" id="surname">
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputCity">Місто</label>
-                  <input type="text" class="form-control" id="inputCity">
+            <div class="col-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="profile-info">
+                    <h2 class="profile-info-title">
+                      Імя
+                    </h2>
+                    <p>
+                      {{user.firstName}}
+                    </p>
+                  </div>
+                  <div class="profile-info">
+                    <h2 class="profile-info-title">
+                      Прізвище
+                    </h2>
+                    <p>
+                      {{user.lastName}}
+                    </p>
+                  </div>
+                  <div class="profile-info">
+                    <h2 class="profile-info-title">
+                      Нікнейм
+                    </h2>
+                    <p>
+                      {{user.userName}}
+                    </p>
+                  </div>
+                  <div class="profile-info">
+                    <h2 class="profile-info-title">
+                      Email
+                    </h2>
+                    <p>
+                      {{user.email}}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="profile-info">
+                    <h2 class="profile-info-title">
+                      Номер телефону
+                    </h2>
+                    <p>
+                      {{user.phoneNumber}}
+                    </p>
+                  </div>
+                  <div class="profile-info">
+                    <h2 class="profile-info-title">
+                      Вік
+                    </h2>
+                    <p>
+                      {{user.age}}
+                    </p>
+                  </div>
+
                 </div>
               </div>
-            </form>
-          </main>
-        </div>
+            </div>
+
+          </div>
+
+        </main>
       </div>
     </mat-drawer-content>
   </mat-drawer-container>

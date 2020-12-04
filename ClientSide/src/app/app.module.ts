@@ -22,7 +22,6 @@ import { LoginModule } from './auth/login.module';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { SettingsComponent } from './account/settings/settings.component';
-import { MyRecordsComponent } from './account/my-records/my-records.component';
 import { SupportComponent } from './account/support/support.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './common/guards/auth-guard';
@@ -73,7 +72,6 @@ export const MY_DATE_FORMATS = {
         { path: 'auth/registration', component: RegistrationComponent },
         { path: 'account/cabinet', component: CabinetComponent, canActivate: [AuthGuard] },
         { path: 'account/cabinet/settings', component: SettingsComponent, canActivate: [AuthGuard] },
-        { path: 'account/cabinet/my-records', component: MyRecordsComponent, canActivate: [AuthGuard] },
         { path: 'account/cabinet/support', component: SupportComponent, canActivate: [AuthGuard] },
         { path: 'departments', component: DepartmentsListComponent },
         { path: 'department/:id', component: DepartmentComponent },
