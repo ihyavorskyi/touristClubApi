@@ -5,7 +5,7 @@ import {DepartmentsListComponent} from './departments-list/departments-list.comp
 import { AddRecordFormComponent } from './forms/add-record-form/add-record-form.component';
 import {MatButtonModule} from '@angular/material/button';
 import {ReactiveFormsModule} from '@angular/forms';
-import { MaterialModule } from 'src/app/material/material.module';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [DepartmentComponent, DepartmentsListComponent, AddRecordFormComponent],
