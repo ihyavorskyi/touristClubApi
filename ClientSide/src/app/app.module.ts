@@ -26,9 +26,11 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import { RegistrationComponent } from './modules/auth/registration/registration.component';
 import { ExcursionComponent } from './modules/excursion/excursion/excursion/excursion.component';
 import { ExursionsComponent } from './modules/excursion/exursions/exursions.component';
-import { MakeAReservationDialogComponent } from './modules/excursion/makeAReservationDialog/makeAReservationDialog/makeAReservationDialog.component';
 import { MainPageComponent } from './modules/main-page/main-page.component';
 import { MaterialModule } from './modules/material/material.module';
+import { ArticlesModule } from './modules/articles/articles.module';
+import { ExcursionsModule } from './modules/excursion/excursions.module';
+import { MakeAReservationDialogComponent } from './modules/excursion/makeAReservationDialog/makeAReservationDialog/makeAReservationDialog.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -49,14 +51,13 @@ export const MY_DATE_FORMATS = {
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,
-    ArticlesListComponent,
-    ArticleComponent,
-    ExursionsComponent,
-    ExcursionComponent,
+    MainPageComponent
+  ],
+  entryComponents: [
+    AddRecordFormComponent,
+    ChangePasswordFormComponent,
     MakeAReservationDialogComponent
   ],
-  entryComponents: [AddRecordFormComponent, ChangePasswordFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -83,6 +84,8 @@ export const MY_DATE_FORMATS = {
     ReactiveFormsModule,
     MaterialModule,
     DepartmentModule,
+    ArticlesModule,
+    ExcursionsModule,
     AccountModule,
     JwtModule.forRoot({
       config: {

@@ -9,14 +9,12 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 })
 export class MakeAReservationDialogComponent implements OnInit {
 
-
   constructor(
     public dialogRef: MatDialogRef<MakeAReservationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   ngOnInit() {
   }
-
 
   onNoClick(): void {
     this.dialogRef.close();

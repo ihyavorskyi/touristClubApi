@@ -1,4 +1,3 @@
-
 import { CommentService } from './../../services/comment.service';
 import { ArticleService } from '../../services/article.service';
 import { Component, OnInit } from '@angular/core';
@@ -7,8 +6,6 @@ import { PageEvent } from '@angular/material/paginator';
 import { Article } from 'src/app/data/models/article';
 import { sendComment } from 'src/app/data/models/sendComment';
 import { Comment } from 'src/app/data/models/comment';
-
-
 
 @Component({
   selector: 'app-article',
@@ -70,13 +67,6 @@ export class ArticleComponent implements OnInit {
   areAnyComments() {
     if (this.article.comments) {
       this.length = this.article.comments.length;
-/* 
-      switch (this.article.comments.length) {
-        case 2: this.pageSize = 2; break;
-        case 3: this.pageSize = 3; break;
-        default: this.pageSize = 1; break;
-      } */
-
       this.comments = this.article.comments.slice(0, this.pageSize);
       this.needPaginator = true;
     }
