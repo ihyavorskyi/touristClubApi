@@ -1,12 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {DoctorService} from '../../department-functionality/services/doctor.service';
-import {RecordService} from '../../department-functionality/services/record.service';
-import {DialogData} from '../../department-functionality/forms/add-record-form/add-record-form.component';
-import {AccountService} from '../services/account.service';
-import {User} from '../../data/models/user';
-import {ChangePasswordRequest} from '../../data/models/ChangePasswordRequest';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { AccountService } from '../services/account.service';
+import { User } from '../../data/models/user';
+import { ChangePasswordRequest } from '../../data/models/ChangePasswordRequest';
 
 @Component({
   selector: 'app-change-password-form',
@@ -18,8 +15,8 @@ export class ChangePasswordFormComponent implements OnInit {
   isLoading = false;
 
   constructor(private fb: FormBuilder,
-              public dialogRef: MatDialogRef<ChangePasswordFormComponent>,
-              private accountService: AccountService) {
+    public dialogRef: MatDialogRef<ChangePasswordFormComponent>,
+    private accountService: AccountService) {
 
   }
 
@@ -35,7 +32,7 @@ export class ChangePasswordFormComponent implements OnInit {
   }
 
   close(result: boolean): void {
-    this.dialogRef.close({success: result});
+    this.dialogRef.close({ success: result });
 
   }
 

@@ -1,14 +1,14 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {User} from '../../../data/models/user';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {DoctorService} from '../../services/doctor.service';
 import {DatePipe, formatDate} from '@angular/common';
 import {RecordService} from '../../services/record.service';
-import {Record} from '../../../data/models/record';
-import {DepartmentService} from '../../../data/models/department-service';
-import {Service} from '../../../data/models/service';
+import { DepartmentService } from 'src/app/data/models/department-service';
+import { Service } from 'src/app/data/models/service';
+import { User } from 'src/app/data/models/user';
+
 
 @Component({
   selector: 'app-add-record-form',
@@ -77,7 +77,7 @@ export class AddRecordFormComponent implements OnInit {
     const meetingDate = 621355968000000000 + (date.getTime() * 10000);
     const doctorId = this.selectedDoctor.id;
     const patientId = localStorage.getItem('uId');
-    const record: Record = {
+   /*  const record: Record = {
       id: 0,
       doctorId: this.selectedDoctor.id,
       patientId: localStorage.getItem('uId'),
@@ -91,7 +91,7 @@ export class AddRecordFormComponent implements OnInit {
       console.log(value);
       this.isLoading = false;
       this.close(true);
-    });
+    }); */
   }
 }
 

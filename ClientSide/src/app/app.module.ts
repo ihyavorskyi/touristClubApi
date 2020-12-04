@@ -14,9 +14,6 @@ import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './navigation/header/header.component';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import { DepartmentComponent } from './department-functionality/department/department.component';
-import { DepartmentsListComponent } from './department-functionality/departments-list/departments-list.component';
-import { DepartmentModule } from './department-functionality/department.module';
 import { CabinetComponent } from './account/cabinet/cabinet.component';
 import { LoginModule } from './auth/login.module';
 import { LoginComponent } from './auth/login/login.component';
@@ -26,13 +23,16 @@ import { SupportComponent } from './account/support/support.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './common/guards/auth-guard';
 import { AuthInterceptor } from './auth/auth-interceptor';
-import { AddRecordFormComponent } from './department-functionality/forms/add-record-form/add-record-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { CabinetNavComponent } from './navigation/cabinet-nav/cabinet-nav.component';
 import { AccountModule } from './account/account.module';
 import { ChangePasswordFormComponent } from './account/change-password-form/change-password-form.component';
 import { ArticleComponent } from './articles/article/article/article.component';
+import { DepartmentModule } from './modules/department-functionality/department.module';
+import { DepartmentComponent } from './modules/department-functionality/department/department.component';
+import { DepartmentsListComponent } from './modules/department-functionality/departments-list/departments-list.component';
+import { AddRecordFormComponent } from './modules/department-functionality/forms/add-record-form/add-record-form.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');

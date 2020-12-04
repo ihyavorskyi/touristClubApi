@@ -1,7 +1,7 @@
+import { Department } from './../../../data/models/department';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DepartmentService } from '../services/department.service';
-import { Department } from '../../data/models/department';
 import { MatDialog } from '@angular/material/dialog';
 import { AddRecordFormComponent } from '../forms/add-record-form/add-record-form.component';
 import { MatSnackBar } from '@angular/material/snack-bar';

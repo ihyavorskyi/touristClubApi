@@ -5,7 +5,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginRequest} from '../../data/models/auth/login-request';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
-import {AddRecordFormComponent} from '../../department-functionality/forms/add-record-form/add-record-form.component';
 import {ChangePasswordFormComponent} from '../change-password-form/change-password-form.component';
 import {EventEmitter} from 'events';
 import {HttpClient, HttpEventType} from '@angular/common/http';
