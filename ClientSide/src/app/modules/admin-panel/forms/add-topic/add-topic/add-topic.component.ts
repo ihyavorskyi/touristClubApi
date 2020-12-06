@@ -12,8 +12,7 @@ export class AddTopicComponent implements OnInit {
     public dialogRef: MatDialogRef<AddTopicComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -21,6 +20,7 @@ export class AddTopicComponent implements OnInit {
 
 }
 export interface DialogData {
-  animal: string;
   name: string;
+  title: string;
+  buttonName: string;
 }

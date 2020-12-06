@@ -28,6 +28,14 @@ export class AdminService {
         return this.http.get<Topic>(this.topicUrl + `/${id}`);
     }
 
+    addTopic(topic: Topic): Observable<boolean> {
+        return this.http.post<boolean>(this.topicUrl, topic);
+    }
+
+    updateTopic(topic: Topic): Observable<boolean> {
+        return this.http.put<boolean>(this.topicUrl, topic);
+    }
+
     deleteTopic(id: number) {
         return this.http.delete(this.topicUrl + `/${id}`);
     }
@@ -39,6 +47,14 @@ export class AdminService {
 
     getCategory(id: number): Observable<Category> {
         return this.http.get<Category>(this.categoryUrl + `/${id}`);
+    }
+
+    addCategory(category: Category): Observable<boolean> {
+        return this.http.post<boolean>(this.categoryUrl, category);
+    }
+
+    updateCategory(category: Category): Observable<boolean> {
+        return this.http.put<boolean>(this.categoryUrl, category);
     }
 
     deleteCategory(id: number) {

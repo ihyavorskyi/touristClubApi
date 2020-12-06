@@ -11,7 +11,7 @@ import { AddTopicComponent } from '../../forms/add-topic/add-topic/add-topic.com
 })
 export class TopicsTableComponent implements OnInit {
 
-  animal: string;
+  title = "Тематика";
   name: string;
 
   topics: Topic[];
@@ -36,12 +36,41 @@ export class TopicsTableComponent implements OnInit {
   openDialogCreate(): void {
     const dialogRef = this.dialog.open(AddTopicComponent, {
       width: '250px',
-      data: { name: this.name, animal: this.animal }
+      data: { name: this.name, title: this.title, buttonName: "Створити" }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      console.log('The dialog was closed  ' + result);
+      this.name = result;
+      if (result) {
+        const topic: Topic = {
+          id: 0,
+          name: result
+        };
+        this.adminService.addTopic(topic).subscribe(value => {
+          console.log(value);
+        });
+      }
+    });
+  }
+
+  openDialogUpdate(name: string, id: number): void {
+    const dialogRef = this.dialog.open(AddTopicComponent, {
+      width: '250px',
+      data: { name: name, title: this.title, buttonName: "Оновити" }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed  ' + result);
+      if (result) {
+        const topic: Topic = {
+          id: id,
+          name: result
+        };
+        this.adminService.updateTopic(topic).subscribe(value => {
+          console.log(value);
+        });
+      }
     });
   }
 }

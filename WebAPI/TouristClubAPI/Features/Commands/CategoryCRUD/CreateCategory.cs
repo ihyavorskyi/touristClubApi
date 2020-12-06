@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TouristClub.API.Data.Models;
 using TouristClubApi.Data;
+using TouristClubApi.Helpers;
 
 namespace TouristClub.API.Features.Commands.CategoryCRUD
 {
@@ -27,9 +28,10 @@ namespace TouristClub.API.Features.Commands.CategoryCRUD
                 _context = context;
             }
 
-            public async Task<bool> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<bool> Handle(Command command, CancellationToken cancellationToken)
             {
-                await _context.Categories.AddAsync(request.Category);
+                ValidationHelper.IsCategoryExist(command.Category.Name, _context);
+                await _context.Categories.AddAsync(command.Category);
                 await _context.SaveChangesAsync();
                 return true;
             }

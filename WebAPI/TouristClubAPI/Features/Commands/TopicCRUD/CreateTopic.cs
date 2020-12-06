@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TouristClub.API.Data.Models;
 using TouristClubApi.Data;
+using TouristClubApi.Helpers;
 
 namespace TouristClub.API.Features.Commands.TopicCRUD
 {
@@ -29,6 +30,7 @@ namespace TouristClub.API.Features.Commands.TopicCRUD
 
             public async Task<bool> Handle(Command command, CancellationToken cancellationToken)
             {
+                ValidationHelper.IsTopicExist(command.Topic.Name, _context);
                 await _context.Topics.AddAsync(command.Topic);
                 await _context.SaveChangesAsync();
                 return true;
