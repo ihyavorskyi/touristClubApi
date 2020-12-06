@@ -13,6 +13,7 @@ namespace TouristClubApi.Data
 
         public DbSet<Article> Articles { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Topic> Topics { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Excursion> Excursions { get; set; }
@@ -22,9 +23,9 @@ namespace TouristClubApi.Data
             base.OnModelCreating(builder);
 
             builder.Entity<Article>()
-                .HasOne(a => a.Category)
-                .WithMany(c => c.Articles)
-                .HasForeignKey(a => a.CategoryId);
+                .HasOne(a => a.Topic)
+                .WithMany(t => t.Articles)
+                .HasForeignKey(a => a.TopicId);
             builder.Entity<Article>()
                 .HasOne(a => a.User)
                 .WithMany(u => u.Articles)
@@ -32,7 +33,7 @@ namespace TouristClubApi.Data
             builder.Entity<Comment>()
                .HasOne(c => c.Article)
                .WithMany(a => a.Comments)
-               .HasForeignKey(c => c.AricleId);
+               .HasForeignKey(c => c.ArticleId);
             builder.Entity<Comment>()
                .HasOne(c => c.User)
                .WithMany(u => u.Comments)

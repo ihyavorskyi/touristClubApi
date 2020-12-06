@@ -10,6 +10,7 @@ namespace TouristClubApi.Data.Models
         public string LastName { get; set; }
         public int Age { get; set; }
         public int RoleId { get; set; }
+        public string AvatarPath { get; set; }
 
         // nav props
         public virtual ICollection<Comment> Comments { get; set; }

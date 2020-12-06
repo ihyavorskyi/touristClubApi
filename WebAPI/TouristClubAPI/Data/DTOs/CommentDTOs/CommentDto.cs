@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TouristClub.API.Data.DTOs.UserDTOs;
+using TouristClubApi.Data.Models;
 
 namespace TouristClub.API.Data.DTOs.CommentDTOs
 {
@@ -12,6 +9,6 @@ namespace TouristClub.API.Data.DTOs.CommentDTOs
         public string Text { get; set; }
         public DateTime Date { get; set; }
 
-        public NameUserDto Author { get; set; }
+        public User Author { get; set; }
     }
 }

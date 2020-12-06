@@ -231,8 +231,8 @@ namespace TouristClub.API.Migrations
                     b.Property<string>("AuthorId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -246,11 +246,14 @@ namespace TouristClub.API.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TopicId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("TopicId");
 
                     b.ToTable("Articles");
                 });
@@ -277,7 +280,7 @@ namespace TouristClub.API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AricleId")
+                    b.Property<int>("ArticleId")
                         .HasColumnType("int");
 
                     b.Property<string>("AuthorId")
@@ -291,7 +294,7 @@ namespace TouristClub.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AricleId");
+                    b.HasIndex("ArticleId");
 
                     b.HasIndex("AuthorId");
 
@@ -361,12 +364,30 @@ namespace TouristClub.API.Migrations
                     b.ToTable("Tickets");
                 });
 
+            modelBuilder.Entity("TouristClub.API.Data.Models.Topic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Topics");
+                });
+
             modelBuilder.Entity("TouristClubApi.Data.Models.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
+
+                    b.Property<string>("AvatarPath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -437,9 +458,9 @@ namespace TouristClub.API.Migrations
                         .WithMany("Articles")
                         .HasForeignKey("AuthorId");
 
-                    b.HasOne("TouristClub.API.Data.Models.Category", "Category")
+                    b.HasOne("TouristClub.API.Data.Models.Topic", "Topic")
                         .WithMany("Articles")
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("TopicId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -448,7 +469,7 @@ namespace TouristClub.API.Migrations
                 {
                     b.HasOne("TouristClub.API.Data.Models.Article", "Article")
                         .WithMany("Comments")
-                        .HasForeignKey("AricleId")
+                        .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

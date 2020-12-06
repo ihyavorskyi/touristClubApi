@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  <p>Створіть нову</p>
+  <mat-form-field>
+    <mat-label>Введіть назву</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" color="warn">Відміна</button>
+  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial class="cancel">{{data.buttonName}}</button>
+</div>

@@ -12,5 +12,19 @@ namespace TouristClubApi.Helpers
             if (isRole)
                 throw new BadRequestException("This role already exists.");
         }
+
+        public static void IsTopicExist(string Name, AppDbContext _context)
+        {
+            var isTopic = _context.Topics.Any(d => d.Name == Name);
+            if (isTopic)
+                throw new BadRequestException("This topic already exists.");
+        }
+
+        public static void IsCategoryExist(string Name, AppDbContext _context)
+        {
+            var isCategory = _context.Categories.Any(d => d.Name == Name);
+            if (isCategory)
+                throw new BadRequestException("This category  already exists.");
+        }
     }
 }
