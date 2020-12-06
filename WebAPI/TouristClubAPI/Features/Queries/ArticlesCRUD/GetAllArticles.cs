@@ -33,6 +33,7 @@ namespace TouristClub.API.Features.Queries.ArticlesCRUD
                         Id = ar.Id,
                         Title = ar.Title,
                         Description = ar.Description,
+                        Date = ar.Date,
                         Topic = new Topic
                         {
                             Id = ar.Topic.Id,

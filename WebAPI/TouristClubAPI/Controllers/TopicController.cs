@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TouristClub.API.Data.Models;
 using TouristClub.API.Features.Commands.TopicCRUD;
+using TouristClub.API.Features.Queries.TopicCRUD;
 
 namespace TouristClub.API.Controllers
 {
@@ -15,6 +16,14 @@ namespace TouristClub.API.Controllers
         public TopicController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAsync()
+        {
+            var getQuery = new GetAllTopics.Query();
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
         }
 
         [HttpPost]

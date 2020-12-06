@@ -1,4 +1,5 @@
-﻿using TouristClub.API.Data.Models;
+﻿using System;
+using TouristClub.API.Data.Models;
 
 namespace TouristClub.API.Data.DTOs
 {
@@ -7,6 +8,8 @@ namespace TouristClub.API.Data.DTOs
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+
+        public DateTime Date { get; set; }
 
         public Topic Topic { get; set; }
     }

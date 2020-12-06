@@ -31,7 +31,7 @@ import { MaterialModule } from './modules/material/material.module';
 import { ArticlesModule } from './modules/articles/articles.module';
 import { ExcursionsModule } from './modules/excursion/excursions.module';
 import { MakeAReservationDialogComponent } from './modules/excursion/makeAReservationDialog/makeAReservationDialog/makeAReservationDialog.component';
-import { AdminPanelModule } from './modules/admin-panel/admin-panel/admin-panel.module';
+import { AdminPanelModule } from './modules/admin-panel/admin-panel.module';
 import { AdminPanelComponent } from './modules/admin-panel/admin-panel/admin-panel.component';
 
 export function tokenGetter() {
