@@ -6,16 +6,18 @@ import { TopicsTableComponent } from './tables/topics-table/topics-table.compone
 import { CategoriesTableComponent } from './tables/categories-table/categories-table.component';
 import { ArticlesTableComponent } from './tables/articles-table/articles-table.component';
 import { ExcursionTableComponent } from './tables/excursion-table/excursion-table/excursion-table.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { AddTopicComponent } from './forms/add-topic/add-topic/add-topic.component';
+import { AddArticleComponent } from './forms/add-article/add-article.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AdminPanelComponent,
@@ -23,7 +25,8 @@ import { AddTopicComponent } from './forms/add-topic/add-topic/add-topic.compone
     CategoriesTableComponent,
     ArticlesTableComponent,
     ExcursionTableComponent,
-    AddTopicComponent
+    AddTopicComponent,
+    AddArticleComponent
   ]
 })
 export class AdminPanelModule { }

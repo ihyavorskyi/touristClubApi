@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>Стаття</h1>
+<div mat-dialog-content>
+  <p>Створіть нову</p>
+  <mat-form-field class="example-full-width">
+    <mat-label>Заголовок</mat-label>
+    <input matInput [(ngModel)]="data.title">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Опис</mat-label>
+    <textarea matInput [(ngModel)]="data.description" class="textarea1"></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Текст</mat-label>
+    <textarea matInput [(ngModel)]="data.text" class="textarea2"></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Тематика</mat-label>
+    <input matInput [(ngModel)]="data.topicId">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Зображення</mat-label>
+    <input matInput [(ngModel)]="data.image">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" color="warn">Відміна</button>
+  <button mat-button (click)="onSubmit()" class="cancel">Готово</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <form [formGroup]="pageForm" (submit)="onSubmit()">
+  <div class="form-group">
+    <label for="title">Заголовок</label>
+    <input type="text" formControlName="title" class="form-control" id="title">
+  </div>
+  <div class="form-group">
+    <label for="description">Опис</label>
+    <textarea type="text" formControlName="description" class="form-control" id="description">
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label for="text">Текст</label>
+    <textarea type="text" formControlName="text" class="form-control" id="text">
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label for="image">Зображення</label>
+    <input type="text" formControlName="image" class="form-control" id="image">
+  </div>
+  <div class="form-group">
+    <label for="topicId">Тематика</label>
+    <input type="text" formControlName="topicId" class="form-control" id="topicId">
+  </div>
+  <div class="form-group buttons-group">
+    <button mat-button type="button" color="warn" (click)="onClose(false)">
+      Відміна
+    </button>
+    <button mat-button type="submit" class="cancel">
+      Готово
+    </button>
+  </div>
+</form> -->

@@ -12,11 +12,11 @@ namespace TouristClub.API.Features.Queries.ArticlesCRUD
 {
     public class GetAllArticles
     {
-        public class Query : IRequest<IEnumerable<ShortArticleDto>>
+        public class Query : IRequest<IEnumerable<Article>>
         {
         }
 
-        public class Handler : IRequestHandler<GetAllArticles.Query, IEnumerable<ShortArticleDto>>
+        public class Handler : IRequestHandler<GetAllArticles.Query, IEnumerable<Article>>
         {
             private readonly AppDbContext _context;
 
@@ -25,15 +25,18 @@ namespace TouristClub.API.Features.Queries.ArticlesCRUD
                 _context = context;
             }
 
-            public async Task<IEnumerable<ShortArticleDto>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<IEnumerable<Article>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var articles = await _context.Articles
-                    .Select(ar => new ShortArticleDto
+                    .Select(ar => new Article
                     {
                         Id = ar.Id,
                         Title = ar.Title,
                         Description = ar.Description,
                         Date = ar.Date,
+                        Text = ar.Text,
+                        Image = ar.Image,
+                        TopicId = ar.TopicId,
                         Topic = new Topic
                         {
                             Id = ar.Topic.Id,

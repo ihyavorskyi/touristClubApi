@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Article } from 'src/app/data/models/article';
+import { AddArticleComponent } from '../../forms/add-article/add-article.component';
 import { AdminService } from '../../services/admin.service';
 
 @Component({
@@ -13,7 +15,7 @@ export class ArticlesTableComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'description', 'date', 'actions'];
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.adminService.getArticles().subscribe(value => {
@@ -26,6 +28,29 @@ export class ArticlesTableComponent implements OnInit {
   delete(id: number) {
     this.adminService.deleteArticle(id).subscribe(value => {
       console.log(value);
+    });
+  }
+
+  openDialogCreate(): void {
+    this.dialog.open(AddArticleComponent, {
+      width: '750px',
+      data: { choser: 1 }
+    });
+  }
+
+  openDialogUpdate(article: Article): void {
+    console.log(article);
+    this.dialog.open(AddArticleComponent, {
+      width: '750px',
+      data: {
+        choser: 2,
+        id:article.id,
+        title: article.title,
+        text: article.text,
+        description: article.description,
+        image: article.image,
+        topicId: article.topicId
+      }
     });
   }
 }
