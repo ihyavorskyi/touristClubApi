@@ -44,6 +44,16 @@ namespace TouristClub.API.Controllers
             return new FileStreamResult(new FileStream(res, FileMode.Open), "image/jpeg");
         }
 
+        [HttpPost("upload"), DisableRequestSizeLimit]
+        public async Task<IActionResult> UploadImage()
+        {
+            var file = Request.Form.Files[0];
+            var id = Request.Form["article"];
+            var command = new UploadArticleImage.Command(file, Int32.Parse(id));
+            var res = await _mediator.Send(command);
+            return Ok(res);
+        }
+
         [HttpPost]
         public async Task<IActionResult> GreateAsync([FromBody] Article article)
         {

@@ -16,6 +16,20 @@ td.mat-footer-cell:last-of-type {
   padding-right: 0px;
 }
 
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+  color: rgb(255 255 255 / 87%);
+}
+
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+  background-color: var(--orange);
+}
+  
 .actions {
   margin: 3px;
 }

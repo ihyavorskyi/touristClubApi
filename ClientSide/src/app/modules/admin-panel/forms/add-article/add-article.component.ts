@@ -1,11 +1,12 @@
 import { Topic } from './../../../../data/models/topic';
 import { AdminService } from './../../services/admin.service';
 import { sendComment } from './../../../../data/models/sendComment';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Article } from 'src/app/data/models/article';
 import { NewArticle } from 'src/app/data/models/newArticle';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-article',
@@ -21,7 +22,9 @@ export class AddArticleComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddArticleComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private adminService: AdminService) { }
+    private adminService: AdminService) {
+
+  }
 
   ngOnInit() {
     this.adminService.getTopics().subscribe(value => {
@@ -43,7 +46,7 @@ export class AddArticleComponent implements OnInit {
       authorId: localStorage.getItem("uId"),
       text: this.data.text,
       description: this.data.description,
-      image: this.data.image
+      image: ""
     };
 
     if (this.data.choser == 1) {
