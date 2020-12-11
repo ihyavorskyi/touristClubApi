@@ -15,11 +15,10 @@ element.style {
 }
 
 .container-fluid {
-  width: 100%;
+  width: 70%;
   padding-right: 15px;
   padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  margin-left: 0;
 }
 
 .sidebar .nav-link {
@@ -41,20 +40,23 @@ a {
   color: #007bff;
 }
 
-.form-row {
-  width: 33.5%;
-}
-
 .form-group {
-  width: 33%;
+  width: 50%;
 }
 
 .is-blurred {
   filter: blur(5px);
   -webkit-filter: blur(5px);
 }
-.user-picture{
+
+.user-picture {
   width: 440px;
   height: 530px;
   border-radius: 360px;
+}
+
+button{
+  width: 21%;
+  margin: 0 2%;
+  margin-top: 1%;
 }
