@@ -1,3 +1,4 @@
+import { Ticket } from './../../../data/models/ticket';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
@@ -20,6 +21,12 @@ export class AccountService {
 
   getShortUser(id: string): Observable<User> {
     return this.http.get<User>(`${this.url}/${id}/short`);
+  }
+
+  getTickets(id :string): Observable<Ticket[]> {
+    console.log(`${this.url}/tickets/${id}`);
+    
+    return this.http.get<Ticket[]>(`${this.url}/tickets/${id}`);
   }
 
   updateUser(user: User): Observable<boolean> {

@@ -31,11 +31,11 @@
   margin: 5%;
 }
 
-::ng-deep .mat-card-image {
+.mat-card-image {
   padding: 0 16px 0 16px;
 }
 
-::ng-deep .mat-card:not([class*=mat-elevation-z]) {
+.mat-card:not([class*=mat-elevation-z]) {
   box-shadow: 10px 10px 5px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
   &:hover {
