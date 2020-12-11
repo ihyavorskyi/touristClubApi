@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Topic } from 'src/app/data/models/topic';
 import { Category } from 'src/app/data/models/category';
 import { Excursion } from 'src/app/data/models/excursion';
+import { NewArticle } from 'src/app/data/models/newArticle';
 
 @Injectable({
     providedIn: 'root'
@@ -70,6 +71,14 @@ export class AdminService {
         return this.http.get<Article>(this.articleurl + `/${id}`);
     }
 
+    addArticle(article: NewArticle): Observable<boolean> {
+        return this.http.post<boolean>(this.articleurl, article);
+    }
+
+    updateArticle(article: NewArticle): Observable<boolean> {
+        return this.http.put<boolean>(this.articleurl, article);
+    }
+
     deleteArticle(id: number) {
         return this.http.delete(this.articleurl + `/${id}`);
     }
@@ -81,6 +90,14 @@ export class AdminService {
 
     getExcursion(id: number): Observable<Excursion> {
         return this.http.get<Excursion>(this.excursionUrl + `/${id}`);
+    }
+
+    addExcursion(excursion: Excursion): Observable<boolean> {
+        return this.http.post<boolean>(this.excursionUrl, excursion);
+    }
+
+    updateExcursion(excursion: Excursion): Observable<boolean> {
+        return this.http.put<boolean>(this.excursionUrl, excursion);
     }
 
     deleteExcursion(id: number) {

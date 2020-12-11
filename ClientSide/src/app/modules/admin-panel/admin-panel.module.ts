@@ -1,3 +1,4 @@
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
@@ -6,16 +7,20 @@ import { TopicsTableComponent } from './tables/topics-table/topics-table.compone
 import { CategoriesTableComponent } from './tables/categories-table/categories-table.component';
 import { ArticlesTableComponent } from './tables/articles-table/articles-table.component';
 import { ExcursionTableComponent } from './tables/excursion-table/excursion-table/excursion-table.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { AddTopicComponent } from './forms/add-topic/add-topic/add-topic.component';
+import { AddArticleComponent } from './forms/add-article/add-article.component';
+import { AddExcursionComponent } from './forms/add-excursion/add-excursion.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatDatepickerModule
   ],
   declarations: [
     AdminPanelComponent,
@@ -23,7 +28,9 @@ import { AddTopicComponent } from './forms/add-topic/add-topic/add-topic.compone
     CategoriesTableComponent,
     ArticlesTableComponent,
     ExcursionTableComponent,
-    AddTopicComponent
+    AddTopicComponent,
+    AddArticleComponent,
+    AddExcursionComponent
   ]
 })
 export class AdminPanelModule { }

@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Екскурсії</h1>
+<div mat-dialog-content>
+  <p>Створіть нову</p>
+  <mat-form-field class="example-full-width">
+    <mat-label>Назва</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Опис</mat-label>
+    <textarea matInput [(ngModel)]="data.description" class="textarea2"></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Ціна</mat-label>
+    <input matInput [(ngModel)]="data.price" type="number">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Кількість місць</mat-label>
+    <input matInput [(ngModel)]="data.numberOfSeats" type="number">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Зображення</mat-label>
+    <input matInput [(ngModel)]="data.image">
+  </mat-form-field>
+
+  <div class="form-group">
+    <mat-form-field appearance="fill" class="formElement">
+      <mat-label>Категорія</mat-label>
+      <mat-select [(ngModel)]="data.categoryId">
+        <mat-option *ngFor="let c of categories" [value]="c.id">
+          {{c.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field appearance="fill" class="formElement">
+      <mat-label>Дата</mat-label>
+      <input matInput [matDatepicker]="picker" (dateChange)="addEvent($event)">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" color="warn">Відміна</button>
+  <button mat-button (click)="onSubmit()" class="cancel">Готово</button>
+</div>

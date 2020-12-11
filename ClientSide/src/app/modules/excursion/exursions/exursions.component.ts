@@ -1,8 +1,7 @@
 import { CategoryService } from './../services/category.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/data/models/category';
-
 
 @Component({
   selector: 'app-exursions',
@@ -12,8 +11,7 @@ import { Category } from 'src/app/data/models/category';
 export class ExursionsComponent implements OnInit {
   category: Category[];
 
-  constructor(private categoryService: CategoryService,
-    private route: ActivatedRoute) { }
+  constructor(private categoryService: CategoryService, private router: Router) { }
 
   ngOnInit() {
     this.categoryService.getCategoriesWithExursions().subscribe(value => {
@@ -22,5 +20,7 @@ export class ExursionsComponent implements OnInit {
     });
   }
 
-
+  goToExcursion(id: number) {
+    this.router.navigateByUrl(`/excursion/${id}`);
+  }
 }

@@ -8,7 +8,7 @@
           <div *ngIf="cat.excursions">
             <div class="row">
               <div class="column" *ngFor="let ex of cat.excursions">
-                <mat-card class="example-card">
+                <mat-card class="example-card" (click)="goToExcursion(ex.id)">
                   <mat-card-content>
                     <p>
                       The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.

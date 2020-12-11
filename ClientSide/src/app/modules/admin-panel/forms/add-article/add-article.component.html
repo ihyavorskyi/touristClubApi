@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Стаття</h1>
+<div mat-dialog-content>
+  <p>Створіть нову</p>
+  <mat-form-field class="example-full-width">
+    <mat-label>Заголовок</mat-label>
+    <input matInput [(ngModel)]="data.title">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Опис</mat-label>
+    <textarea matInput [(ngModel)]="data.description" class="textarea1"></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Текст</mat-label>
+    <textarea matInput [(ngModel)]="data.text" class="textarea2"></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Зображення</mat-label>
+    <input matInput [(ngModel)]="data.image">
+  </mat-form-field>
+  <div class="form-group">
+    <mat-form-field appearance="fill" class="formElement">
+      <mat-label>Категорія</mat-label>
+      <mat-select [(ngModel)]="data.topicId">
+        <mat-option *ngFor="let c of topics" [value]="c.id">
+          {{c.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" color="warn">Відміна</button>
+  <button mat-button (click)="onSubmit()" class="cancel">Готово</button>
+</div>
