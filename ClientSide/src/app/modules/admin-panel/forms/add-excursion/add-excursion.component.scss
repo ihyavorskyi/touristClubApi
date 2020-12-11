@@ -1,0 +1,52 @@
+.cancel {
+  color: var(--green);
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 750px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.textarea1 {
+  min-height: 50px;
+}
+
+.textarea2 {
+  min-height: 120px;
+}
+
+div.mat-dialog-actions {
+  justify-content: center;
+}
+
+
+.formElement {
+  width: 300px;
+}
+
+.form-content {
+  text-align: center;
+}
+
+.form-header {
+  text-align: center;
+}
+
+.main-content {
+  margin: 0 50px;
+}
+
+.buttons-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-button {
+  width: 100px;
+  height: 40px;
+}

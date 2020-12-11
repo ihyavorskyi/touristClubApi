@@ -92,6 +92,14 @@ export class AdminService {
         return this.http.get<Excursion>(this.excursionUrl + `/${id}`);
     }
 
+    addExcursion(excursion: Excursion): Observable<boolean> {
+        return this.http.post<boolean>(this.excursionUrl, excursion);
+    }
+
+    updateExcursion(excursion: Excursion): Observable<boolean> {
+        return this.http.put<boolean>(this.excursionUrl, excursion);
+    }
+
     deleteExcursion(id: number) {
         return this.http.delete(this.excursionUrl + `/${id}`);
     }

@@ -1,20 +1,15 @@
 <app-header></app-header>
 <div class="background">
   <div class="page">
-
     <div class="excursion_block">
       <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      <h1>TITLETITLETITLETITLETITLETITLETITLETITLETITLETITLETITLETITLETITLETITLETITLETITLETITLETITLETITLETITLETITLE</h1>
-      <p>
-        texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttextexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttextexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttextexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
-      </p>
-
-      <h2>Місць залишилось: 100</h2>
+      <h1> {{this.excursion.name}} </h1>
+      <p> {{this.excursion.description}} </p>
+      <h2>Місць залишилось: {{this.excursion.numberOfSeats}}</h2>
       <div class="button_div">
-        <button class="button" (click)="openDialog()"><span>Забронювати</span></button>
+        <button class="button" (click)="openDialog()" *ngIf="haveSeats"><span>Забронювати</span></button>
       </div>
     </div>
-
   </div>
 </div>
 <app-footer></app-footer>

@@ -1,25 +1,28 @@
 ﻿using MediatR;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TouristClub.API.Data.Models;
+using TouristClub.API.Helpers;
 using TouristClubApi.Data;
 
-namespace TouristClub.API.Features.Commands.ExcursionCRUD
+namespace TouristClub.API.Features.Commands.TicketCRUD
 {
-    public class CreateExcursion
+    public class GreateTicket
     {
         public class Command : IRequest<bool>
         {
-            public Excursion Excursion { get; set; }
+            public Ticket Ticket { get; set; }
 
-            public Command(Excursion excursion)
+            public Command(Ticket ticket)
             {
-                Excursion = excursion;
+                Ticket = ticket;
             }
         }
 
-        public class Handler : IRequestHandler<CreateExcursion.Command, bool>
+        public class Handler : IRequestHandler<GreateTicket.Command, bool>
         {
             private readonly AppDbContext _context;
 
@@ -30,10 +33,9 @@ namespace TouristClub.API.Features.Commands.ExcursionCRUD
 
             public async Task<bool> Handle(Command command, CancellationToken cancellationToken)
             {
-                //ValidationHelper.IsRoleExist(command.Name, _context);
-                var tspan = new TimeSpan();
-                command.Excursion.Date = new DateTimeOffset(command.Excursion.Date, tspan).LocalDateTime;
-                await _context.Excursions.AddAsync(command.Excursion);
+                command.Ticket.UniqueCode = UniqueCodeCreator.Create();
+                command.Ticket.DateOfIssuance = DateTime.Now;
+                await _context.Tickets.AddAsync(command.Ticket);
                 await _context.SaveChangesAsync();
                 return true;
             }

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using TouristClub.API.Data.Models;
@@ -29,6 +30,8 @@ namespace TouristClub.API.Features.Commands.ExcursionCRUD
 
             public async Task<bool> Handle(Command command, CancellationToken cancellationToken)
             {
+                var tspan = new TimeSpan();
+                command.Excursion.Date = new DateTimeOffset(command.Excursion.Date, tspan).LocalDateTime;
                 var excursion = await _context.Excursions.FindAsync(command.Excursion.Id);
                 if (excursion != null)
                 {
