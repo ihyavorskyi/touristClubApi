@@ -4,7 +4,7 @@
         <div class="content">
             <div class="row">
                 <div class="column">
-                    <img src="../../../../assets/avatar.jpg" alt="" class="author_image">
+                    <img [src]="getAuthorLinkPicture(article.author.id)" alt="" class="author_image">
                     <h1 class="author_info">{{this.article.author.lastName}} {{this.article.author.firstName}}</h1>
                 </div>
                 <div class="column">
@@ -30,7 +30,9 @@
                     <div class="comment" *ngFor="let c of this.comments">
                         <mat-card class="comment_card">
                             <mat-card-header>
-                                <div mat-card-avatar class="comment_image"></div>
+                                <div mat-card-avatar >
+                                    <img [src]="getAuthorLinkPicture(c.author.id)" alt="" class="comment_image">
+                                </div>
                                 <mat-card-title>{{c.author.userName}}</mat-card-title>
                                 <mat-card-subtitle>{{c.date | date:'shortDate'}}</mat-card-subtitle>
                             </mat-card-header>

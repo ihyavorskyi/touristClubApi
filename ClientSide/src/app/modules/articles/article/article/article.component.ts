@@ -73,6 +73,12 @@ export class ArticleComponent implements OnInit {
     return `https://localhost:5001/api/articles/image/${id}`;
   }
 
+  public getAuthorLinkPicture(id: string) {
+    console.log(`https://localhost:5001/api/account/avatar/${id}`);
+
+    return `https://localhost:5001/api/account/avatar/${id}`;
+  }
+
   onPageChange(event: PageEvent) {
     const startIndex = event.pageIndex * event.pageSize;
     let endIndex = startIndex + event.pageSize;
@@ -89,6 +95,4 @@ export class ArticleComponent implements OnInit {
       this.needPaginator = true;
     }
   }
-
-
 }
