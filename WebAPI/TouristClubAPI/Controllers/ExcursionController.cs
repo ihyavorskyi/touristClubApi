@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.IO;
 using System.Threading.Tasks;
+using TouristClub.API.Data.DTOs;
 using TouristClub.API.Data.Models;
 using TouristClub.API.Features.Commands.ExcursionCRUD;
 using TouristClub.API.Features.Queries.ExcursionCRUD;
@@ -41,6 +43,16 @@ namespace TouristClub.API.Controllers
             var query = new GetExcursionPhoto.Query(Id);
             var res = await _mediator.Send(query);
             return new FileStreamResult(new FileStream(res, FileMode.Open), "image/jpeg");
+        }
+
+        [HttpPost("upload"), DisableRequestSizeLimit]
+        public async Task<IActionResult> UploadImage()
+        {
+            var file = Request.Form.Files[0];
+            var id = Request.Form["excursion"];
+            var command = new UploadExcursionImage.Command(file, Int32.Parse(id));
+            var res = await _mediator.Send(command);
+            return Ok(res);
         }
 
         [HttpPost]

@@ -1,0 +1,54 @@
+<section class="cabinet-content">
+  <app-cabinet-header></app-cabinet-header>
+  <mat-drawer-container class="example-container cabinet-drawer-container">
+    <mat-drawer mode="side" opened>
+      <app-cabinet-nav></app-cabinet-nav>
+    </mat-drawer>
+    <mat-drawer-content>
+      <main role="main" class="col-md-9 col-lg-10 px-md-4">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Моя бронь</h1>
+        </div>
+      </main>
+      <div class="my-table" *ngIf="tickets">
+        <table mat-table [dataSource]="tickets" class="mat-elevation-z8" #TableOne style="width: 100%;">
+
+          <ng-container matColumnDef="dateOfIssuance">
+            <th mat-header-cell *matHeaderCellDef style="width: 10%;">Дата оформлення</th>
+            <td mat-cell *matCellDef="let element">{{element.dateOfIssuance | date:'shortDate'}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="uniqueCode">
+            <th mat-header-cell *matHeaderCellDef style="width: 30%;">Унікальний код</th>
+            <td mat-cell *matCellDef="let element">{{element.uniqueCode}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef style="width: 30%;">Екскурсія</th>
+            <td mat-cell *matCellDef="let element" (click)="goToExcursion(element.excursion.id)" class="backgr">
+              {{element.excursion.name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%;">Дата</th>
+            <td mat-cell *matCellDef="let element" (click)="goToExcursion(element.excursion.id)" class="backgr">
+              {{element.excursion.date | date:'shortDate'}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%;">Відміна</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-flat-button color="warn" (click)="deleteTicket(element)">
+                Відмінити
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</section>

@@ -1,3 +1,4 @@
+import { NumberOfSeats } from './../../../data/models/numberOfSeats';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -16,5 +17,9 @@ export class TicketService {
 
     addTicket(ticket: Ticket): Observable<boolean> {
         return this.http.post<boolean>(this.url, ticket);
+    }
+
+    updateNumberOfSeats(numberOfSeats: NumberOfSeats): Observable<boolean> {
+        return this.http.put<boolean>(this.url, numberOfSeats);
     }
 }

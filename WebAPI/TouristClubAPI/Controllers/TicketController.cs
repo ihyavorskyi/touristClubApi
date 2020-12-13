@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using TouristClub.API.Data.DTOs;
 using TouristClub.API.Data.Models;
+using TouristClub.API.Features.Commands.ExcursionCRUD;
 using TouristClub.API.Features.Commands.TicketCRUD;
 
 namespace TouristClub.API.Controllers
@@ -21,6 +23,14 @@ namespace TouristClub.API.Controllers
         public async Task<IActionResult> GreateAsync([FromBody] Ticket ticket)
         {
             var command = new GreateTicket.Command(ticket);
+            var res = await _mediator.Send(command);
+            return Ok(res);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateNumberOfSeatsAsync([FromBody] NumberOfSeatsDto numberOfSeatsDto)
+        {
+            var command = new UpdateNumberOfSeats.Command(numberOfSeatsDto);
             var res = await _mediator.Send(command);
             return Ok(res);
         }

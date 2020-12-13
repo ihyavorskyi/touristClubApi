@@ -19,9 +19,6 @@ export class SettingsComponent implements OnInit {
   isFormEnabled = false;
   isDialogOpen = false;
 
-
-
-
   constructor(private fb: FormBuilder,
     private accountService: AccountService,
     private snackBar: MatSnackBar,
@@ -36,8 +33,6 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
 
   initForm(): void {
     this.pageForm = this.fb.group({
@@ -57,7 +52,7 @@ export class SettingsComponent implements OnInit {
       email: this.pageForm.get('email').value,
       firstName: this.pageForm.get('firstName').value,
       lastName: this.pageForm.get('lastName').value,
-      age: this.pageForm.get('age').value,
+      age: Number(this.pageForm.get('age').value),
       userName: this.pageForm.get('userName').value,
       phoneNumber: this.pageForm.get('phoneNumber').value,
       id: this.user.id,
@@ -75,7 +70,7 @@ export class SettingsComponent implements OnInit {
         });
       }
     });
-
+    this.isFormEnabled = !this.isFormEnabled;
   }
 
   toogleForm(): void {
@@ -105,5 +100,4 @@ export class SettingsComponent implements OnInit {
       }
     });
   }
-
 }

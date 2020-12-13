@@ -1,8 +1,10 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from './../../services/admin.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Topic } from 'src/app/data/models/topic';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTopicComponent } from '../../forms/add-topic/add-topic/add-topic.component';
+import { MySnackBar } from 'src/app/common/snack-bar.service';
 
 @Component({
   selector: 'app-topics-table',
@@ -18,18 +20,26 @@ export class TopicsTableComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'actions'];
 
-  constructor(private adminService: AdminService, public dialog: MatDialog) { }
+  constructor(private adminService: AdminService, 
+    public dialog: MatDialog, 
+    private snackBar: MySnackBar,
+    private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.adminService.getTopics().subscribe(value => {
       this.topics = value;
-      console.log(this.topics);
+      this.changeDetectorRefs.detectChanges();
     });
   }
 
   delete(id: number) {
     this.adminService.deleteTopic(id).subscribe(value => {
-      console.log(value);
+      this.topics = this.topics.filter(rec => rec.id !== id);
+      this.snackBar.showSnackBar('Видалено');
     });
   }
 
@@ -40,15 +50,12 @@ export class TopicsTableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed  ' + result);
       this.name = result;
       if (result) {
-        const topic: Topic = {
-          id: 0,
-          name: result
-        };
+        const topic: Topic = { id: 0, name: result };
         this.adminService.addTopic(topic).subscribe(value => {
-          console.log(value);
+          this.snackBar.showSnackBar('Ствoрено');
+          this.refresh();
         });
       }
     });
@@ -61,14 +68,11 @@ export class TopicsTableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed  ' + result);
       if (result) {
-        const topic: Topic = {
-          id: id,
-          name: result
-        };
+        const topic: Topic = { id: id, name: result };
         this.adminService.updateTopic(topic).subscribe(value => {
-          console.log(value);
+          this.snackBar.showSnackBar('Оновлено');
+          this.refresh();
         });
       }
     });

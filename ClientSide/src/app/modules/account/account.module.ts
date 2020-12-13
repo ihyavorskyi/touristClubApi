@@ -10,6 +10,7 @@ import { ChangePasswordFormComponent } from './change-password-form/change-passw
 import { CabinetHeaderComponent } from './cabinet-header/cabinet-header.component';
 import { UploadHelperComponent } from './extensions/upload-helper/upload-helper.component';
 import { CreateUserFormComponent } from './forms/create-user-form/create-user-form.component';
+import { MyReservationComponent } from './my-reservation/my-reservation.component';
 
 
 @NgModule({
@@ -21,10 +22,14 @@ import { CreateUserFormComponent } from './forms/create-user-form/create-user-fo
     ChangePasswordFormComponent,
     CabinetHeaderComponent,
     UploadHelperComponent,
-    CreateUserFormComponent
+    CreateUserFormComponent,
+    MyReservationComponent
   ],
   imports: [
-    CommonModule, MaterialModule, FormsModule, ReactiveFormsModule
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AccountModule {

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using TouristClub.API.Data.DTOs;
 using TouristClub.API.Features.Commands.UserCRUD.ChangeUserPassword;
 using TouristClub.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword;
+using TouristClub.API.Features.Queries.TicketCRUD;
 using TouristClub.API.Features.Queries.UserCRUD.GetShortUserById;
 using TouristClub.API.Features.Queries.UserCRUD.GetUserById;
 
@@ -37,6 +38,14 @@ namespace TouristClub.API.Controllers
         public async Task<IActionResult> GetShortAsync(string id)
         {
             var getQuery = new GetShortUserById.Query(id);
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
+        }
+
+        [HttpGet("tickets/{id}")]
+        public async Task<IActionResult> GetUserTicketsAsync(string id)
+        {
+            var getQuery = new GetUserTickets.Query(id);
             var res = await _mediator.Send(getQuery);
             return Ok(res);
         }

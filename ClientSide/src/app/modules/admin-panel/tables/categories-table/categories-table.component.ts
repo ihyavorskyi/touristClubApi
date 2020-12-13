@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { MySnackBar } from 'src/app/common/snack-bar.service';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Category } from 'src/app/data/models/category';
-import { Topic } from 'src/app/data/models/topic';
 import { AddTopicComponent } from '../../forms/add-topic/add-topic/add-topic.component';
 import { AdminService } from '../../services/admin.service';
 
@@ -19,18 +19,26 @@ export class CategoriesTableComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'actions'];
 
-  constructor(private adminService: AdminService, public dialog: MatDialog) { }
+  constructor(private adminService: AdminService,
+    public dialog: MatDialog,
+    private snackBar: MySnackBar,
+    private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.adminService.getCategories().subscribe(value => {
       this.categories = value;
-      console.log(this.categories);
+      this.changeDetectorRefs.detectChanges();
     });
   }
 
   delete(id: number) {
     this.adminService.deleteCategory(id).subscribe(value => {
-      console.log(value);
+      this.categories = this.categories.filter(rec => rec.id !== id);
+      this.snackBar.showSnackBar('Видалено');
     });
   }
 
@@ -42,16 +50,12 @@ export class CategoriesTableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed  ' + result);
       this.name = result;
       if (result) {
-        const category: Category = {
-          id: 0,
-          name: result,
-          excursions: null
-        };
+        const category: Category = { id: 0, name: result, excursions: null };
         this.adminService.addCategory(category).subscribe(value => {
-          console.log(value);
+          this.snackBar.showSnackBar('Створено');
+          this.refresh();
         });
       }
     });
@@ -66,13 +70,10 @@ export class CategoriesTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed  ' + result);
       if (result) {
-        const category: Category = {
-          id: id,
-          name: result,
-          excursions: null
-        };
+        const category: Category = { id: id, name: result, excursions: null };
         this.adminService.updateCategory(category).subscribe(value => {
-          console.log(value);
+          this.snackBar.showSnackBar('Оновлено');
+          this.refresh();
         });
       }
     });

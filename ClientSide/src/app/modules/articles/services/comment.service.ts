@@ -17,4 +17,8 @@ export class CommentService {
     addComment(comment: sendComment): Observable<boolean> {
         return this.http.post<boolean>(this.url, comment);
     }
+
+    deleteComment(id: number): Observable<boolean> {
+        return this.http.delete<boolean>(this.url + `/${id}`);
+    }
 }

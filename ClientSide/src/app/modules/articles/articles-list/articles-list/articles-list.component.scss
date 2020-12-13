@@ -81,7 +81,7 @@
 }
 
 .description_text {
-  font-family:inherit;
+  font-family: inherit;
   width: 550px;
   max-height: 150px;
   padding-left: 40px;
@@ -104,4 +104,8 @@
 
 .content {
   min-height: calc(100vh - 70px);
+}
+
+p {
+  font-size: 18px;
 }

@@ -33,6 +33,7 @@ import { ExcursionsModule } from './modules/excursion/excursions.module';
 import { MakeAReservationDialogComponent } from './modules/excursion/makeAReservationDialog/makeAReservationDialog/makeAReservationDialog.component';
 import { AdminPanelModule } from './modules/admin-panel/admin-panel.module';
 import { AdminPanelComponent } from './modules/admin-panel/admin-panel/admin-panel.component';
+import { MyReservationComponent } from './modules/account/my-reservation/my-reservation.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -70,10 +71,8 @@ export const MY_DATE_FORMATS = {
         { path: 'auth/login', component: LoginComponent },
         { path: 'auth/registration', component: RegistrationComponent },
         { path: 'account/cabinet', component: CabinetComponent, canActivate: [AuthGuard] },
-        { path: 'account/cabinet/settings', component: SettingsComponent, canActivate: [AuthGuard] },
         { path: 'account/cabinet/support', component: SupportComponent, canActivate: [AuthGuard] },
-        { path: 'departments', component: DepartmentsListComponent },
-        { path: 'department/:id', component: DepartmentComponent },
+        { path: 'account/cabinet/reservations', component: MyReservationComponent, canActivate: [AuthGuard] },
         { path: 'main', component: MainPageComponent },
         { path: 'articles', component: ArticlesListComponent },
         { path: 'article/:id', component: ArticleComponent },

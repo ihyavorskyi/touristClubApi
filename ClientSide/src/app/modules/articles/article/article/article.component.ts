@@ -6,6 +6,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Article } from 'src/app/data/models/article';
 import { sendComment } from 'src/app/data/models/sendComment';
 import { Comment } from 'src/app/data/models/comment';
+import { MySnackBar } from 'src/app/common/snack-bar.service';
 
 @Component({
   selector: 'app-article',
@@ -18,14 +19,20 @@ export class ArticleComponent implements OnInit {
   comments: Comment[];
   needPaginator: boolean;
 
+  commentAuthorId = localStorage.getItem("uId");
+
   length: number;
   pageSize = 3;
   pageSizeOptions: number[] = [1, 3, 5, 10];
 
   constructor(private route: ActivatedRoute, private articleService: ArticleService,
-    private commentService: CommentService) { }
+    private commentService: CommentService, private snackBar: MySnackBar) { }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.route.params.subscribe(params => {
       if (params.id) {
         this.articleId = params.id;
@@ -45,14 +52,31 @@ export class ArticleComponent implements OnInit {
         authorId: localStorage.getItem("uId"),
         articleId: Number(this.articleId)
       };
+      item.value = '';
       this.commentService.addComment(comment).subscribe(value => {
         console.log(value);
+        this.refresh();
       });
     }
   }
 
+  deleteComment(id: number) {
+    console.log(id);
+    this.commentService.deleteComment(id).subscribe(value => {
+      console.log(value);
+      this.refresh();
+      this.snackBar.showSnackBar('Видалено');
+    });
+  }
+
   public getLinkPicture(id: number) {
     return `https://localhost:5001/api/articles/image/${id}`;
+  }
+
+  public getAuthorLinkPicture(id: string) {
+    console.log(`https://localhost:5001/api/account/avatar/${id}`);
+
+    return `https://localhost:5001/api/account/avatar/${id}`;
   }
 
   onPageChange(event: PageEvent) {

@@ -43,7 +43,7 @@ export class AddExcursionComponent implements OnInit {
       numberOfSeats: Number(this.data.numberOfSeats),
       categoryId: Number(this.data.categoryId),
       description: this.data.description,
-      image: this.data.image,
+      image: "",
       date: this.data.date
     };
 

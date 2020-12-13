@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="this.articles">
+  <table mat-table [dataSource]="this.articles" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> Індетифікатор </th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -29,6 +29,18 @@
         <div class="name">
           {{element.date | date:'shortDate'}}
         </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="upload">
+      <th mat-header-cell *matHeaderCellDef> Зображення </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="name">
+          <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files,element.id)"
+            style="display:none;">
+          <button mat-raised-button color="accent" style="width: 150px;" (click)="file.click()">Завантажити</button>
+        </div>
+        <mat-progress-bar style="margin-top: 10px;" *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
       </td>
     </ng-container>
 
