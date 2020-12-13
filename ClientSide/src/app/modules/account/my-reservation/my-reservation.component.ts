@@ -1,9 +1,10 @@
 import { Ticket } from './../../../data/models/ticket';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { User } from 'src/app/data/models/user';
-import { RecordService } from '../../department-functionality/services/record.service';
 import { AccountService } from '../services/account.service';
+import { Router } from '@angular/router';
+import { NumberOfSeats } from 'src/app/data/models/numberOfSeats';
+import { TicketService } from '../../excursion/services/ticket.service';
 
 @Component({
   selector: 'app-my-reservation',
@@ -11,46 +12,54 @@ import { AccountService } from '../services/account.service';
   styleUrls: ['./my-reservation.component.scss']
 })
 export class MyReservationComponent implements OnInit {
-
-  user: User;
-  displayedColumns: string[] = ['doctor', 'patient', 'dateOfMeeting', 'dateOfRecord', 'service', 'delete'];
-  displayedColumns2: string[] = ['doctor', 'patient', 'dateOfMeeting', 'dateOfRecord', 'service', 'empty'];
-
+  displayedColumns: string[] = ['dateOfIssuance', 'uniqueCode', 'name', 'date', 'delete'];
   tickets: Ticket[];
 
-  constructor(private accountService: AccountService, private recordService: RecordService, private snackBar: MatSnackBar) { }
+  constructor(private accountService: AccountService, private ticketService: TicketService,
+    private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
+    this.refresh();
+  }
+
+  refresh() {
     const uId = localStorage.getItem('uId');
     console.log(uId);
-    
+
     this.accountService.getTickets(uId).subscribe(value => {
       this.tickets = value;
       console.log(this.tickets);
     });
   }
 
-  deleteRecord(id: number): void {
-    /*    this.recordService.deleteRecord(id).subscribe(value => {
-         if (value) {
-           this.records = this.records.filter(rec => rec.id !== id);
-           this.snackBar.open('Запис відмінено', 'Подякував', {
-             duration: 3000,
-             horizontalPosition: 'center',
-             verticalPosition: 'bottom',
-             panelClass: ['my-snack'],
-             politeness: 'assertive'
-           });
-         }
-       }); */
+  deleteTicket(ticket: Ticket): void {
+    this.accountService.deleteTicket(ticket.id).subscribe(value => {
+      if (value) {
+        const newNumberOfSeats: NumberOfSeats = {
+          excursionId: Number(ticket.excursion.id),
+          numberOfSeats: Number(ticket.excursion.numberOfSeats - 1)
+        }
+        console.log(ticket.excursion.numberOfSeats);
+        this.ticketService.updateNumberOfSeats(newNumberOfSeats).subscribe(value => {
+          this.refresh();
+          this.showSnackBar('Бронь відмінено');
+        });
+      }
+    });
   }
 
-  isDateExpired(dateStr: any): boolean {
-    const date = new Date(dateStr);
-    const nowDate = new Date();
-    if (date < nowDate) {
-      return true;
-    }
-    return false;
+
+  showSnackBar(messadge: string) {
+    this.snackBar.open(messadge, 'Подякував', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: ['my-snack'],
+      politeness: 'assertive'
+    });
+  }
+
+  goToExcursion(id: number) {
+    this.router.navigateByUrl(`/excursion/${id}`);
   }
 }

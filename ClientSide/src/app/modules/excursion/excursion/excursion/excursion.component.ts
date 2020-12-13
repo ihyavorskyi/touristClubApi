@@ -26,12 +26,16 @@ export class ExcursionComponent implements OnInit {
     private route: ActivatedRoute,) { }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh(){
     this.route.params.subscribe(params => {
       if (params.id) {
         this.excursionId = params.id;
         this.adminService.getExcursion(this.excursionId).subscribe(ex => {
           this.excursion = ex;
-          if(this.excursion.numberOfSeats <= 0 ){
+          if (this.excursion.numberOfSeats <= 0) {
             this.haveSeats = false;
           }
           console.log(this.excursion);
@@ -43,7 +47,10 @@ export class ExcursionComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(MakeAReservationDialogComponent, {
       width: '250px',
-      data: { excursionId: this.excursionId }
+      data: { excursionId: this.excursionId, numberOfSeats: this.excursion.numberOfSeats }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.refresh();
     });
   }
 }

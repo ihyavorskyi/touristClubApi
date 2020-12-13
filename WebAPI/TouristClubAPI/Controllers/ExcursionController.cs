@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using TouristClub.API.Data.DTOs;
 using TouristClub.API.Data.Models;
 using TouristClub.API.Features.Commands.ExcursionCRUD;
 using TouristClub.API.Features.Queries.ExcursionCRUD;

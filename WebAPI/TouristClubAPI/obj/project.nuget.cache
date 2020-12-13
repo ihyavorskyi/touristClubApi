@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4nIlEBWqpFokDPSgUMoYMpCTFZBSJEav9VNmQ+j8Krt3Qd+DdZUZ9pqhB59JrGaK5Ypak8z5VCWIUfxjdoB8SQ==",
+  "dgSpecHash": "gr0Cln1PC+AVqzdqh/NxHYiudpW2Xapc7+rpRsAkyook3+lg+Ci9jt6XwsA3/IcCrbVh35O15M9ieK2rknIwdg==",
   "success": true,
-  "projectFilePath": "D:\\C#\\TouristClubApi\\WebAPI\\TouristClubAPI\\TouristClub.API.csproj",
+  "projectFilePath": "D:\\C#\\touristClubApi\\WebAPI\\TouristClubAPI\\TouristClub.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",

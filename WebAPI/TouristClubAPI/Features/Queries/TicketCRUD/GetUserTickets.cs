@@ -39,7 +39,14 @@ namespace TouristClub.API.Features.Queries.TicketCRUD
                     UniqueCode = tic.UniqueCode,
                     ExcursionId = tic.ExcursionId,
                     OwnerId = tic.OwnerId,
-                    DateOfIssuance = tic.DateOfIssuance
+                    DateOfIssuance = tic.DateOfIssuance,
+                    Excursion = new Excursion
+                    {
+                        Id = tic.Excursion.Id,
+                        Name = tic.Excursion.Name,
+                        Date = tic.Excursion.Date,
+                        NumberOfSeats = tic.Excursion.NumberOfSeats
+                    }
                 }).ToListAsync();
                 return tickets;
             }

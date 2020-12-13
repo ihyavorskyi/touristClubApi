@@ -24,9 +24,11 @@ export class AccountService {
   }
 
   getTickets(id :string): Observable<Ticket[]> {
-    console.log(`${this.url}/tickets/${id}`);
-    
     return this.http.get<Ticket[]>(`${this.url}/tickets/${id}`);
+  }
+
+  deleteTicket(id :number): Observable<boolean> {
+    return this.http.delete<boolean>(`${environment.apiUrl}/tickets/${id}`);
   }
 
   updateUser(user: User): Observable<boolean> {

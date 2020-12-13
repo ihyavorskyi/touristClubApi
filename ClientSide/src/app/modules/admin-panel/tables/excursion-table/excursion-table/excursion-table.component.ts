@@ -1,6 +1,7 @@
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Excursion } from 'src/app/data/models/excursion';
 import { AddExcursionComponent } from '../../../forms/add-excursion/add-excursion.component';
 import { AdminService } from '../../../services/admin.service';
@@ -21,34 +22,53 @@ export class ExcursionTableComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'price', 'count', 'date', 'upload', 'actions'];
 
-  constructor(private adminService: AdminService,
-    public dialog: MatDialog,private http: HttpClient) { 
-      this.isVisible = false;
-      this.isLoading = false;
-    }
+  constructor(private adminService: AdminService, public dialog: MatDialog, private http: HttpClient,
+    private snackBar: MatSnackBar, private changeDetectorRefs: ChangeDetectorRef) {
+    this.isVisible = false;
+    this.isLoading = false;
+  }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.adminService.getExcursions().subscribe(value => {
       this.excursions = value;
-      console.log("Excursion -> ");
-      console.log(this.excursions);
+      this.changeDetectorRefs.detectChanges();
     });
   }
+
+  showSnackBar(messadge: string) {
+    this.snackBar.open(messadge, 'Подякував', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: ['my-snack'],
+      politeness: 'assertive'
+    });
+  }
+
 
   delete(id: number) {
     this.adminService.deleteExcursion(id).subscribe(value => {
-      console.log(value);
+      this.excursions = this.excursions.filter(rec => rec.id !== id);
+      this.showSnackBar('Видалено');
     });
   }
   openDialogCreate(): void {
-    this.dialog.open(AddExcursionComponent, {
+    const dialogRef = this.dialog.open(AddExcursionComponent, {
       width: '750px',
       data: { choser: 1 }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.refresh();
+      this.showSnackBar('Ствoрено');
     });
   }
 
   openDialogUpdate(excursion: Excursion): void {
-    this.dialog.open(AddExcursionComponent, {
+    const dialogRef = this.dialog.open(AddExcursionComponent, {
       width: '750px',
       data: {
         choser: 2,
@@ -62,9 +82,13 @@ export class ExcursionTableComponent implements OnInit {
         date: excursion.date
       }
     });
+    dialogRef.afterClosed().subscribe(result => {
+      this.refresh();
+      this.showSnackBar('Оновлено');
+    });
   }
 
-  
+
   public uploadFile = (files, id) => {
     if (files.length === 0) {
       return;
@@ -89,5 +113,6 @@ export class ExcursionTableComponent implements OnInit {
           }, 3000);
         }
       });
+    this.showSnackBar('Зображення оновлено');
   };
 }

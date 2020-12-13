@@ -1,6 +1,7 @@
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Article } from 'src/app/data/models/article';
 import { AddArticleComponent } from '../../forms/add-article/add-article.component';
 import { AdminService } from '../../services/admin.service';
@@ -21,35 +22,53 @@ export class ArticlesTableComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'description', 'date', 'upload', 'actions'];
 
-  constructor(private adminService: AdminService, public dialog: MatDialog, private http: HttpClient) {
+  constructor(private adminService: AdminService, public dialog: MatDialog,
+    private http: HttpClient, private snackBar: MatSnackBar, private changeDetectorRefs: ChangeDetectorRef) {
     this.isVisible = false;
     this.isLoading = false;
   }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.adminService.getArticles().subscribe(value => {
       this.articles = value;
-      console.log("Article -> ");
-      console.log(this.articles);
+      this.changeDetectorRefs.detectChanges();
+    });
+  }
+
+  showSnackBar(messadge: string) {
+    this.snackBar.open(messadge, 'Подякував', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: ['my-snack'],
+      politeness: 'assertive'
     });
   }
 
   delete(id: number) {
     this.adminService.deleteArticle(id).subscribe(value => {
-      console.log(value);
+      this.articles = this.articles.filter(rec => rec.id !== id);
+      this.showSnackBar('Видалено');
     });
   }
 
   openDialogCreate(): void {
-    this.dialog.open(AddArticleComponent, {
+    const dialogRef = this.dialog.open(AddArticleComponent, {
       width: '750px',
       data: { choser: 1 }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.refresh();
+      this.showSnackBar('Ствoрено');
     });
   }
 
   openDialogUpdate(article: Article): void {
-    console.log(article);
-    this.dialog.open(AddArticleComponent, {
+    const dialogRef = this.dialog.open(AddArticleComponent, {
       width: '750px',
       data: {
         choser: 2,
@@ -60,6 +79,10 @@ export class ArticlesTableComponent implements OnInit {
         image: article.image,
         topicId: article.topicId
       }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.refresh();
+      this.showSnackBar('Оновлено');
     });
   }
 
@@ -87,5 +110,6 @@ export class ArticlesTableComponent implements OnInit {
           }, 3000);
         }
       });
+    this.showSnackBar('Зображення оновлено');
   };
 }
