@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 
@@ -12,21 +11,19 @@ export class HeaderComponent implements OnInit {
   burgerActive: boolean;
   isUserAuthenticated = false;
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService) {
     this.burgerActive = false;
     this.isUserAuthenticated = this.authService.isUserAuthenticated();
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
 
   burgerClick(): void {
     this.burgerActive = !this.burgerActive;
     document.body.classList.toggle('lock');
     const arra = ['a', 'b', 'c'];
-    let isA = arra.some(value => value.includes('a'));
+    let isA = arra.some(value => value.includes('a'));    
   }
 
   logOut() {
@@ -34,5 +31,6 @@ export class HeaderComponent implements OnInit {
       .navigateByUrl('/RELOAD_PLACEHOLDER', { skipLocationChange: true })
       .then(() => this.router.navigateByUrl('/'));
     this.authService.logOut();
+    this.isUserAuthenticated = this.authService.isUserAuthenticated();
   }
 }

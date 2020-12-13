@@ -14,6 +14,7 @@
             <div class="article_body">
                 <img [src]="getLinkPicture(this.articleId)" alt="" class="article_body image">
                 <p [innerHTML]="this.article.text" class="article_body text"></p>
+                <div class="date">Дата написання: {{this.article.date | date:'medium'}}</div>
             </div>
 
             <div class="comments_block">
@@ -30,7 +31,7 @@
                     <div class="comment" *ngFor="let c of this.comments">
                         <mat-card class="comment_card">
                             <mat-card-header>
-                                <div mat-card-avatar >
+                                <div mat-card-avatar>
                                     <img [src]="getAuthorLinkPicture(c.author.id)" alt="" class="comment_image">
                                 </div>
                                 <mat-card-title>{{c.author.userName}}</mat-card-title>

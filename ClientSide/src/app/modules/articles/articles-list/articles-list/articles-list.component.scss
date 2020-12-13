@@ -100,6 +100,11 @@
   padding-left: 40px;
   width: 550px;
   font-size: 22px;
+
+  &:hover {
+    color: #5c5c5c;
+    cursor: pointer;
+  }
 }
 
 .content {

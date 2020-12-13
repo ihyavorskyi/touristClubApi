@@ -65,7 +65,6 @@ namespace TouristClub.API.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateAsync([FromBody] Article article)
         {
-            Console.WriteLine(article.Id);
             var command = new UpdateArticle.Command(article);
             var res = await _mediator.Send(command);
             return Ok(res);

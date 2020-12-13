@@ -74,8 +74,6 @@ export class ArticleComponent implements OnInit {
   }
 
   public getAuthorLinkPicture(id: string) {
-    console.log(`https://localhost:5001/api/account/avatar/${id}`);
-
     return `https://localhost:5001/api/account/avatar/${id}`;
   }
 

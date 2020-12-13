@@ -11,14 +11,25 @@ import { ShortArticle } from 'src/app/data/models/shortArticle';
 export class ArticlesListComponent implements OnInit {
 
   articles: ShortArticle[];
+  articlesClone: ShortArticle[];
 
   constructor(private articleService: ArticleService, private router: Router) {
     this.articleService.getArticles().subscribe(value => {
       this.articles = value;
+      this.articlesClone = value;
+      this.articles.reverse();
     });
   }
 
   ngOnInit() {
+  }
+
+  filterTopic(id: number) {
+    if (this.articles.length == this.articlesClone.length) {
+      this.articles = this.articles.filter(rec => rec.topic.id == id);
+    } else {
+      this.articles = this.articlesClone;
+    }
   }
 
   goToArticle(id: number): void {

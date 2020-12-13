@@ -38,7 +38,7 @@ export class MyReservationComponent implements OnInit {
       if (value) {
         const newNumberOfSeats: NumberOfSeats = {
           excursionId: Number(ticket.excursion.id),
-          numberOfSeats: Number(ticket.excursion.numberOfSeats - 1)
+          numberOfSeats: Number(ticket.excursion.numberOfSeats + 1)
         }
         console.log(ticket.excursion.numberOfSeats);
         this.ticketService.updateNumberOfSeats(newNumberOfSeats).subscribe(value => {
@@ -53,3 +53,5 @@ export class MyReservationComponent implements OnInit {
     this.router.navigateByUrl(`/excursion/${id}`);
   }
 }
+
+

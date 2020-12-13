@@ -23,4 +23,8 @@ export class ExursionsComponent implements OnInit {
   goToExcursion(id: number) {
     this.router.navigateByUrl(`/excursion/${id}`);
   }
+
+  public getLinkPicture(id: number) {
+    return `https://localhost:5001/api/excursions/image/${id}`;
+  }
 }
