@@ -4,6 +4,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Topic } from 'src/app/data/models/topic';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTopicComponent } from '../../forms/add-topic/add-topic/add-topic.component';
+import { MySnackBar } from 'src/app/common/snack-bar.service';
 
 @Component({
   selector: 'app-topics-table',
@@ -19,7 +20,9 @@ export class TopicsTableComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'actions'];
 
-  constructor(private adminService: AdminService, public dialog: MatDialog, private snackBar: MatSnackBar,
+  constructor(private adminService: AdminService, 
+    public dialog: MatDialog, 
+    private snackBar: MySnackBar,
     private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
@@ -33,20 +36,10 @@ export class TopicsTableComponent implements OnInit {
     });
   }
 
-  showSnackBar(messadge: string) {
-    this.snackBar.open(messadge, 'Подякував', {
-      duration: 3000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: ['my-snack'],
-      politeness: 'assertive'
-    });
-  }
-
   delete(id: number) {
     this.adminService.deleteTopic(id).subscribe(value => {
       this.topics = this.topics.filter(rec => rec.id !== id);
-      this.showSnackBar('Видалено');
+      this.snackBar.showSnackBar('Видалено');
     });
   }
 
@@ -61,7 +54,7 @@ export class TopicsTableComponent implements OnInit {
       if (result) {
         const topic: Topic = { id: 0, name: result };
         this.adminService.addTopic(topic).subscribe(value => {
-          this.showSnackBar('Стврено');
+          this.snackBar.showSnackBar('Ствoрено');
           this.refresh();
         });
       }
@@ -78,7 +71,7 @@ export class TopicsTableComponent implements OnInit {
       if (result) {
         const topic: Topic = { id: id, name: result };
         this.adminService.updateTopic(topic).subscribe(value => {
-          this.showSnackBar('Оновлено');
+          this.snackBar.showSnackBar('Оновлено');
           this.refresh();
         });
       }

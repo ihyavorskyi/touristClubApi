@@ -37,9 +37,8 @@
                             <mat-card-content>
                                 <p>{{c.text}} </p>
                             </mat-card-content>
-                            <mat-card-actions>
-                                <button mat-button>LIKE</button>
-                                <button mat-button>SHARE</button>
+                            <mat-card-actions *ngIf="c.author.id == commentAuthorId">
+                                <button mat-raised-button color="warn" (click)="deleteComment(c.id)">Видалити</button>
                             </mat-card-actions>
                         </mat-card>
                     </div>

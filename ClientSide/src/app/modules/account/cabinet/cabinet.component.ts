@@ -5,6 +5,7 @@ import { User } from 'src/app/data/models/user';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ChangePasswordFormComponent } from '../change-password-form/change-password-form.component';
+import { MySnackBar } from 'src/app/common/snack-bar.service';
 
 @Component({
   selector: 'app-cabinet',
@@ -27,7 +28,7 @@ export class CabinetComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private accountService: AccountService,
     private fbSetting: FormBuilder,
-    private snackBar: MatSnackBar,
+    private snackBar: MySnackBar,
     public dialog: MatDialog) {
     const uId = localStorage.getItem('uId');
     this.accountService.getUser(uId).subscribe(value => {
@@ -41,7 +42,7 @@ export class CabinetComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+
   initFormSet(): void {
     this.pageForm = this.fb.group({
       email: [this.user.email],
@@ -99,13 +100,7 @@ export class CabinetComponent implements OnInit {
     this.accountService.updateUser(model).subscribe(value => {
       if (value) {
         this.user = model;
-        this.snackBar.open('Зміни збережено', 'Подякував', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-          panelClass: ['my-snack'],
-          politeness: 'assertive'
-        });
+        this.snackBar.showSnackBar('Зміни збережено');
       }
     });
     this.isFormEnabled = !this.isFormEnabled;
@@ -128,16 +123,8 @@ export class CabinetComponent implements OnInit {
     dialogRef.afterClosed().subscribe((value) => {
       this.isDialogOpen = false;
       if (value.success) {
-        this.snackBar.open('Пароль змінено', 'Подякував', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-          panelClass: ['my-snack'],
-          politeness: 'assertive'
-        });
+        this.snackBar.showSnackBar('Пароль змінено');
       }
     });
   }
-
-
 }

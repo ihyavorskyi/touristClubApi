@@ -1,10 +1,10 @@
 import { NumberOfSeats } from './../../../../data/models/numberOfSeats';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Ticket } from './../../../../data/models/ticket';
 import { TicketService } from './../../services/ticket.service';
-import { Inject, NgModule } from '@angular/core';
+import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MySnackBar } from 'src/app/common/snack-bar.service';
 
 @Component({
   selector: 'app-makeAReservationDialog',
@@ -15,32 +15,24 @@ export class MakeAReservationDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<MakeAReservationDialogComponent>, private ticketService: TicketService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private snackBar: MatSnackBar) { data.count = 1; }
-
-  ngOnInit() {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private snackBar: MySnackBar) {
+    data.count = 1;
   }
 
-
-  showSnackBar(messadge: string) {
-    this.snackBar.open(messadge, 'Подякував', {
-      duration: 3000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: ['my-snack'],
-      politeness: 'assertive'
-    });
+  ngOnInit() {
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
+
   onYesClick() {
     const newNumberOfSeats: NumberOfSeats = {
       excursionId: Number(this.data.excursionId),
       numberOfSeats: Number(this.data.numberOfSeats - this.data.count)
     }
     this.ticketService.updateNumberOfSeats(newNumberOfSeats).subscribe(value => {
-      this.showSnackBar('Заброньовано');
+      this.snackBar.showSnackBar('Заброньовано');
     });
     const ticket: Ticket = {
       id: 0,

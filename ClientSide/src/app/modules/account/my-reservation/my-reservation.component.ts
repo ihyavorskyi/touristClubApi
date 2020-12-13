@@ -5,6 +5,7 @@ import { AccountService } from '../services/account.service';
 import { Router } from '@angular/router';
 import { NumberOfSeats } from 'src/app/data/models/numberOfSeats';
 import { TicketService } from '../../excursion/services/ticket.service';
+import { MySnackBar } from 'src/app/common/snack-bar.service';
 
 @Component({
   selector: 'app-my-reservation',
@@ -16,7 +17,7 @@ export class MyReservationComponent implements OnInit {
   tickets: Ticket[];
 
   constructor(private accountService: AccountService, private ticketService: TicketService,
-    private snackBar: MatSnackBar, private router: Router) { }
+    private snackBar: MySnackBar, private router: Router) { }
 
   ngOnInit(): void {
     this.refresh();
@@ -42,20 +43,9 @@ export class MyReservationComponent implements OnInit {
         console.log(ticket.excursion.numberOfSeats);
         this.ticketService.updateNumberOfSeats(newNumberOfSeats).subscribe(value => {
           this.refresh();
-          this.showSnackBar('Бронь відмінено');
+          this.snackBar.showSnackBar('Бронь відмінено');
         });
       }
-    });
-  }
-
-
-  showSnackBar(messadge: string) {
-    this.snackBar.open(messadge, 'Подякував', {
-      duration: 3000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: ['my-snack'],
-      politeness: 'assertive'
     });
   }
 

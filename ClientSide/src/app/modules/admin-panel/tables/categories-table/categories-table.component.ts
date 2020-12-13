@@ -1,8 +1,7 @@
+import { MySnackBar } from 'src/app/common/snack-bar.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Category } from 'src/app/data/models/category';
-import { Topic } from 'src/app/data/models/topic';
 import { AddTopicComponent } from '../../forms/add-topic/add-topic/add-topic.component';
 import { AdminService } from '../../services/admin.service';
 
@@ -20,8 +19,10 @@ export class CategoriesTableComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'actions'];
 
-  constructor(private adminService: AdminService, public dialog: MatDialog,
-    private snackBar: MatSnackBar, private changeDetectorRefs: ChangeDetectorRef) { }
+  constructor(private adminService: AdminService,
+    public dialog: MatDialog,
+    private snackBar: MySnackBar,
+    private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.refresh();
@@ -34,20 +35,10 @@ export class CategoriesTableComponent implements OnInit {
     });
   }
 
-  showSnackBar(messadge: string) {
-    this.snackBar.open(messadge, 'Подякував', {
-      duration: 3000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: ['my-snack'],
-      politeness: 'assertive'
-    });
-  }
-
   delete(id: number) {
     this.adminService.deleteCategory(id).subscribe(value => {
       this.categories = this.categories.filter(rec => rec.id !== id);
-      this.showSnackBar('Видалено');
+      this.snackBar.showSnackBar('Видалено');
     });
   }
 
@@ -63,7 +54,7 @@ export class CategoriesTableComponent implements OnInit {
       if (result) {
         const category: Category = { id: 0, name: result, excursions: null };
         this.adminService.addCategory(category).subscribe(value => {
-          this.showSnackBar('Створено');
+          this.snackBar.showSnackBar('Створено');
           this.refresh();
         });
       }
@@ -81,7 +72,7 @@ export class CategoriesTableComponent implements OnInit {
       if (result) {
         const category: Category = { id: id, name: result, excursions: null };
         this.adminService.updateCategory(category).subscribe(value => {
-          this.showSnackBar('Оновлено');
+          this.snackBar.showSnackBar('Оновлено');
           this.refresh();
         });
       }

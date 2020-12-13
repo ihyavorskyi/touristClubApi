@@ -1,7 +1,7 @@
+import { MySnackBar } from 'src/app/common/snack-bar.service';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Excursion } from 'src/app/data/models/excursion';
 import { AddExcursionComponent } from '../../../forms/add-excursion/add-excursion.component';
 import { AdminService } from '../../../services/admin.service';
@@ -22,8 +22,11 @@ export class ExcursionTableComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'price', 'count', 'date', 'upload', 'actions'];
 
-  constructor(private adminService: AdminService, public dialog: MatDialog, private http: HttpClient,
-    private snackBar: MatSnackBar, private changeDetectorRefs: ChangeDetectorRef) {
+  constructor(private adminService: AdminService,
+    public dialog: MatDialog,
+    private http: HttpClient,
+    private snackBar: MySnackBar,
+    private changeDetectorRefs: ChangeDetectorRef) {
     this.isVisible = false;
     this.isLoading = false;
   }
@@ -39,21 +42,10 @@ export class ExcursionTableComponent implements OnInit {
     });
   }
 
-  showSnackBar(messadge: string) {
-    this.snackBar.open(messadge, 'Подякував', {
-      duration: 3000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: ['my-snack'],
-      politeness: 'assertive'
-    });
-  }
-
-
   delete(id: number) {
     this.adminService.deleteExcursion(id).subscribe(value => {
       this.excursions = this.excursions.filter(rec => rec.id !== id);
-      this.showSnackBar('Видалено');
+      this.snackBar.showSnackBar('Видалено');
     });
   }
   openDialogCreate(): void {
@@ -63,7 +55,7 @@ export class ExcursionTableComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.refresh();
-      this.showSnackBar('Ствoрено');
+      this.snackBar.showSnackBar('Ствoрено');
     });
   }
 
@@ -84,7 +76,7 @@ export class ExcursionTableComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.refresh();
-      this.showSnackBar('Оновлено');
+      this.snackBar.showSnackBar('Оновлено');
     });
   }
 
@@ -113,6 +105,6 @@ export class ExcursionTableComponent implements OnInit {
           }, 3000);
         }
       });
-    this.showSnackBar('Зображення оновлено');
+    this.snackBar.showSnackBar('Зображення оновлено');
   };
 }

@@ -23,7 +23,7 @@ export class ExcursionComponent implements OnInit {
   haveSeats = true;
 
   constructor(public dialog: MatDialog, private adminService: AdminService,
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.refresh();
