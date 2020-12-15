@@ -4,6 +4,10 @@
     <div class="content">
 
       <div *ngIf="articles">
+        <div class="no_journalist" *ngIf="!isJournalist"></div>
+        <div class="journalist" *ngIf="isJournalist">
+          <button class="button" (click)="writeArticle()"><span>Написати статтю</span></button>
+        </div>
         <div class="article_block" *ngFor="let a of articles">
           <div class="article_body" (click)=" goToArticle(a.id)">
             <h1 class="article_title">{{a.title}}</h1>

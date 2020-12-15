@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Environment} from '@angular/compiler-cli/src/ngtsc/typecheck/src/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {JwtHelperService} from '@auth0/angular-jwt';
+import { Injectable } from '@angular/core';
+import { Environment } from '@angular/compiler-cli/src/ngtsc/typecheck/src/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthResponse } from 'src/app/data/models/auth/auth-response';
 import { LoginRequest } from 'src/app/data/models/auth/login-request';
 import { RegistrationRequest } from 'src/app/data/models/auth/registration-request';
@@ -26,6 +26,10 @@ export class AuthService {
 
   register(registerModel: RegistrationRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(this.url + '/register', registerModel, this.requestOptions);
+  }
+
+  roles(id: string): Observable<string[]> {
+    return this.http.get<string[]>(environment.apiUrl + '/roles/user/' + `${id}`);
   }
 
   logOut(): void {

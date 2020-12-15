@@ -201,3 +201,34 @@ p {
   border-radius: 10px;
   color: white;
 }
+
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+  color: rgb(255 255 255 / 87%);
+}
+
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+  background-color: var(--orange);
+}
+
+.actions {
+  margin: 10px;
+  width: 30%;
+}
+
+.create {
+  background-color: var(--green);
+  width: 60%;
+}
+
+.edit {
+  width: 50%;
+  justify-content: space-between;
+  display: flex;
+  margin: 0 auto;
+}

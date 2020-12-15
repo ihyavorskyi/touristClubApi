@@ -13,6 +13,8 @@ namespace TouristClub.API.Data.DTOs.ArticleDTOs
         public string Text { get; set; }
         public string Image { get; set; }
         public DateTime Date { get; set; }
+        public int TopicId { get; set; }
+        public string Description { get; set; }
 
         //nav props
         public Topic Topic { get; set; }

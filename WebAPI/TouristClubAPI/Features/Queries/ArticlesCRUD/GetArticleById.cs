@@ -43,6 +43,8 @@ namespace TouristClub.API.Features.Queries.ArticlesCRUD
                     Title = ar.Title,
                     Text = ar.Text,
                     Date = ar.Date,
+                    TopicId = ar.TopicId,
+                    Description = ar.Description,
                     Author = new User
                     {
                         Id = ar.User.Id,

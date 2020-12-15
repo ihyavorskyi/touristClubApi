@@ -15,7 +15,7 @@
   </mat-form-field>
   <div class="form-group">
     <mat-form-field appearance="fill" class="formElement">
-      <mat-label>Категорія</mat-label>
+      <mat-label>Тематика</mat-label>
       <mat-select [(ngModel)]="data.topicId">
         <mat-option *ngFor="let c of topics" [value]="c.id">
           {{c.name}}
