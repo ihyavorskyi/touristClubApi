@@ -37,6 +37,8 @@ namespace TouristClub.API.Features.Commands.Roles
                 if (user == null)
                     throw new BadRequestException("This user does not exist!");
 
+                await _userManager.RemoveFromRolesAsync(user, await _userManager.GetRolesAsync(user));
+
                 var res = await _userManager.AddToRoleAsync(user, command.model.Role);
                 return res.Succeeded;
             }

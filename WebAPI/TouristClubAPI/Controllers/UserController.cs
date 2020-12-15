@@ -1,5 +1,6 @@
 ﻿using MedClinical.API.Features.Commands.UserCRUD;
 using MedClinical.API.Features.Commands.UserCRUD.DeleteUser;
+using MedClinicalAPI.Features.Queries.UserCRUD;
 using MediatR;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,14 @@ namespace TouristClub.API.Controllers
         public UserController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            var getQuery = new GetAllUsers.Query();
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
         }
 
         [HttpGet("{id}")]

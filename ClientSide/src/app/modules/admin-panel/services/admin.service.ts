@@ -1,3 +1,4 @@
+import { Role } from './../../../data/models/role';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,6 +8,7 @@ import { Topic } from 'src/app/data/models/topic';
 import { Category } from 'src/app/data/models/category';
 import { Excursion } from 'src/app/data/models/excursion';
 import { NewArticle } from 'src/app/data/models/newArticle';
+import { User } from 'src/app/data/models/user';
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +17,7 @@ export class AdminService {
     topicUrl: string = environment.apiUrl + '/topics';
     categoryUrl: string = environment.apiUrl + '/categories';
     excursionUrl: string = environment.apiUrl + '/excursions';
-    articleurl: string = environment.apiUrl + '/articles';
+    articleUrl: string = environment.apiUrl + '/articles';
 
     constructor(private http: HttpClient) {
     }
@@ -64,23 +66,23 @@ export class AdminService {
 
     //ARTICLE
     getArticles(): Observable<Article[]> {
-        return this.http.get<Article[]>(this.articleurl);
+        return this.http.get<Article[]>(this.articleUrl);
     }
 
     getArticle(id: number): Observable<Article> {
-        return this.http.get<Article>(this.articleurl + `/${id}`);
+        return this.http.get<Article>(this.articleUrl + `/${id}`);
     }
 
     addArticle(article: NewArticle): Observable<boolean> {
-        return this.http.post<boolean>(this.articleurl, article);
+        return this.http.post<boolean>(this.articleUrl, article);
     }
 
     updateArticle(article: NewArticle): Observable<boolean> {
-        return this.http.put<boolean>(this.articleurl, article);
+        return this.http.put<boolean>(this.articleUrl, article);
     }
 
     deleteArticle(id: number) {
-        return this.http.delete(this.articleurl + `/${id}`);
+        return this.http.delete(this.articleUrl + `/${id}`);
     }
 
     //EXCURSION
@@ -102,5 +104,23 @@ export class AdminService {
 
     deleteExcursion(id: number) {
         return this.http.delete(this.excursionUrl + `/${id}`);
+    }
+
+    //USERS
+    getUsers(): Observable<User[]> {
+        return this.http.get<User[]>(`${environment.apiUrl}/users`);
+    }
+
+    deleteUser(id: string) {
+        return this.http.delete(`${environment.apiUrl}/users/${id}`);
+    }
+
+    //ROLES
+    getRoles(): Observable<Role[]> {
+        return this.http.get<Role[]>(`${environment.apiUrl}/roles`);
+    }
+
+    changeRole(role: Role): Observable<boolean> {
+        return this.http.post<boolean>(`${environment.apiUrl}/account/roles`, role);
     }
 }
