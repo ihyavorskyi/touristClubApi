@@ -27,12 +27,10 @@ namespace TouristClub.API.Features.Queries.ArticlesCRUD
         public class Handler : IRequestHandler<GetArticleById.Query, ArticleDto>
         {
             private readonly AppDbContext _context;
-            private readonly UserManager<User> _userManager;
 
-            public Handler(AppDbContext context, UserManager<User> userManager)
+            public Handler(AppDbContext context)
             {
                 _context = context;
-                _userManager = userManager;
             }
 
             public async Task<ArticleDto> Handle(Query request, CancellationToken cancellationToken)

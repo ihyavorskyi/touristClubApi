@@ -1,3 +1,4 @@
+import { UsersTableComponent } from './tables/users-table/users-table.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AddTopicComponent } from './forms/add-topic/add-topic/add-topic.component';
 import { AddArticleComponent } from './forms/add-article/add-article.component';
 import { AddExcursionComponent } from './forms/add-excursion/add-excursion.component';
+import { ChangeRoleComponent } from './forms/cnange-role/cnange-role.component';
 
 @NgModule({
   imports: [
@@ -28,9 +30,11 @@ import { AddExcursionComponent } from './forms/add-excursion/add-excursion.compo
     CategoriesTableComponent,
     ArticlesTableComponent,
     ExcursionTableComponent,
+    UsersTableComponent,
     AddTopicComponent,
     AddArticleComponent,
-    AddExcursionComponent
+    AddExcursionComponent,
+    ChangeRoleComponent
   ]
 })
 export class AdminPanelModule { }

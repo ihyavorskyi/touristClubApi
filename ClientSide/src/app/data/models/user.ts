@@ -7,4 +7,5 @@ export class User {
   public phoneNumber: string;
   public age: number;
   public role: string;
+  public roles: string[];
 }

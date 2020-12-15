@@ -1,4 +1,6 @@
-﻿namespace TouristClub.API.Data.DTOs
+﻿using System.Collections.Generic;
+
+namespace TouristClub.API.Data.DTOs
 {
     public class UserDto
     {

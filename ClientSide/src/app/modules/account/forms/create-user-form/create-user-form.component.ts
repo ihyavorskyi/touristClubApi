@@ -49,7 +49,8 @@ export class CreateUserFormComponent implements OnInit {
       userName: this.pageForm.get('userName').value,
       phoneNumber: this.pageForm.get('phoneNumber').value,
       id: null,
-      role: this.selectedRole
+      role: this.selectedRole,
+      roles: null
     };
     console.log(model);
   }
