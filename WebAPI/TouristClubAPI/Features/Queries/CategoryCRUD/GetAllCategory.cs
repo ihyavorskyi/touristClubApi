@@ -34,7 +34,9 @@ namespace TouristClub.API.Features.Queries.CategoryCRUD
                         Excursions = cat.Excursions.Select(ex => new Excursion
                         {
                             Id = ex.Id,
-                            Name = ex.Name
+                            Name = ex.Name,
+                            Price = ex.Price,
+                            Date = ex.Date
                         }).ToList()
                     }).ToListAsync();
                 return categories;

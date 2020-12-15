@@ -14,6 +14,18 @@
             <div class="article_body">
                 <img [src]="getLinkPicture(this.articleId)" alt="" class="article_body image">
                 <p [innerHTML]="this.article.text" class="article_body text"></p>
+                <div class="date">Дата написання: {{this.article.date | date:'medium'}}</div>
+
+                <div class="edit" *ngIf="imAuthor">
+                    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files,article.id)"
+                        style="display:none;">
+                    <button mat-raised-button color="accent" class="actions"
+                        (click)="file.click()">Завантажити</button>
+                    <button mat-raised-button color="primary" class="actions"
+                        (click)="openDialogUpdate(article)">Оновити</button>
+                    <button mat-raised-button color="warn" class="actions"
+                        (click)="delete(article.id)">Видалити</button>
+                </div>
             </div>
 
             <div class="comments_block">
@@ -30,7 +42,7 @@
                     <div class="comment" *ngFor="let c of this.comments">
                         <mat-card class="comment_card">
                             <mat-card-header>
-                                <div mat-card-avatar >
+                                <div mat-card-avatar>
                                     <img [src]="getAuthorLinkPicture(c.author.id)" alt="" class="comment_image">
                                 </div>
                                 <mat-card-title>{{c.author.userName}}</mat-card-title>

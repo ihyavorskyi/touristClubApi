@@ -29,7 +29,7 @@ export class ExcursionComponent implements OnInit {
     this.refresh();
   }
 
-  refresh(){
+  refresh() {
     this.route.params.subscribe(params => {
       if (params.id) {
         this.excursionId = params.id;
@@ -52,5 +52,9 @@ export class ExcursionComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.refresh();
     });
+  }
+  
+  public getLinkPicture(id: number) {
+    return `https://localhost:5001/api/excursions/image/${id}`;
   }
 }

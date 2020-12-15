@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using TouristClub.API.Data.DTOs;
 using TouristClub.API.Features.Commands.Roles;
 using TouristClub.API.Features.Queries.Roles;
+using TouristClub.API.Features.Queries.RolesCRUD;
 
 namespace TouristClub.API.Controllers
 {
@@ -21,6 +23,14 @@ namespace TouristClub.API.Controllers
         public async Task<IActionResult> GetAsync()
         {
             var getQuery = new GetAllRoles.Query();
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
+        }
+
+        [HttpGet("user/{id}")]
+        public async Task<IActionResult> GetIsInRoleAsync(string id)
+        {
+            var getQuery = new GetIsInRole.Query(id);
             var res = await _mediator.Send(getQuery);
             return Ok(res);
         }

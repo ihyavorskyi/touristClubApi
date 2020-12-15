@@ -46,7 +46,7 @@ export class AddArticleComponent implements OnInit {
       authorId: localStorage.getItem("uId"),
       text: this.data.text,
       description: this.data.description,
-      image: ""
+      image: this.data.image
     };
 
     if (this.data.choser == 1) {

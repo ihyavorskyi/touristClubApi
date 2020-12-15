@@ -9,6 +9,10 @@
   backdrop-filter: blur(4px);
 }
 
+h1 {
+  margin-top: 3%;
+}
+
 .content {
   min-height: calc(100vh - 70px);
 }
@@ -97,7 +101,6 @@
     font-size: 30px;
     font-style: normal;
     margin: 0;
-
   }
 }
 
@@ -185,5 +188,47 @@
 }
 
 p {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+.date {
+  background-color: #ff9900;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+}
+
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+  color: rgb(255 255 255 / 87%);
+}
+
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+  background-color: var(--orange);
+}
+
+.actions {
+  margin: 10px;
+  width: 30%;
+}
+
+.create {
+  background-color: var(--green);
+  width: 60%;
+}
+
+.edit {
+  width: 50%;
+  justify-content: space-between;
+  display: flex;
+  margin: 0 auto;
 }

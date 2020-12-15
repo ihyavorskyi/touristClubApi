@@ -34,21 +34,6 @@ namespace TouristClub.API.Controllers
             {
                 return BadRequest(loginResponse.ErrorMessages);
             }
-            //HttpContext.Response.Cookies.Append(".AspNetCore.Application.Id", authResponse.Token,
-            //  new CookieOptions
-            //  {
-            //      //MaxAge = TimeSpan.FromMinutes(2)
-            //      //Expires = DateTime.UtcNow.AddMinutes(2)
-            //  }); ;
-            //HttpContext.Response.Cookies.Append(".AspNetCore.Application.Id-refresh", authResponse.RefreshToken,
-            //new CookieOptions
-            //{
-            //    MaxAge = TimeSpan.FromHours(48)
-            //});
-            //HttpContext.Response.Cookies.Append("User-email", model.Email,
-            //new CookieOptions
-            //{
-            //});
             return Ok(new
             {
                 loginResponse.Token,
@@ -94,17 +79,6 @@ namespace TouristClub.API.Controllers
             if (model == null)
                 return BadRequest("Invalid client request");
             return Ok();
-            //var authResponse = await _authBl.RefreshTokenAsync(model.Token, model.RefreshToken);
-            //if (!authResponse.Success)
-            //{
-            //    return BadRequest(authResponse.ErrorMessages);
-            //}
-
-            //return Ok(new
-            //{
-            //    Token = authResponse.Token,
-            //    RefreshToken = authResponse.RefreshToken
-            //});
         }
     }
 }
