@@ -12,15 +12,14 @@
                 </div>
             </div>
             <div class="article_body">
-                <img [src]="getLinkPicture(this.articleId)" alt="" class="article_body image">
+                <img [src]="getLinkPicture(this.article.id)" alt="" class="article_body image">
                 <p [innerHTML]="this.article.text" class="article_body text"></p>
                 <div class="date">Дата написання: {{this.article.date | date:'medium'}}</div>
 
-                <div class="edit" *ngIf="imAuthor">
+                <div class="edit" *ngIf="article.author.id == userId">
                     <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files,article.id)"
                         style="display:none;">
-                    <button mat-raised-button color="accent" class="actions"
-                        (click)="file.click()">Завантажити</button>
+                    <button mat-raised-button color="accent" class="actions" (click)="file.click()">Завантажити</button>
                     <button mat-raised-button color="primary" class="actions"
                         (click)="openDialogUpdate(article)">Оновити</button>
                     <button mat-raised-button color="warn" class="actions"
@@ -51,7 +50,7 @@
                             <mat-card-content>
                                 <p>{{c.text}} </p>
                             </mat-card-content>
-                            <mat-card-actions *ngIf="c.author.id == commentAuthorId">
+                            <mat-card-actions *ngIf="c.author.id == userId">
                                 <button mat-raised-button color="warn" (click)="deleteComment(c.id)">Видалити</button>
                             </mat-card-actions>
                         </mat-card>

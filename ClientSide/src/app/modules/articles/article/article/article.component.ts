@@ -1,6 +1,6 @@
 import { CommentService } from './../../services/comment.service';
 import { ArticleService } from '../../services/article.service';
-import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 import { Article } from 'src/app/data/models/article';
@@ -19,13 +19,10 @@ import { AdminService } from 'src/app/modules/admin-panel/services/admin.service
 })
 export class ArticleComponent implements OnInit {
   article: Article;
-  articleId: number;
   comments: Comment[];
   needPaginator: boolean;
 
-  imAuthor = false;
-
-  commentAuthorId = localStorage.getItem("uId");
+  userId = localStorage.getItem("uId");
 
   length: number;
   pageSize = 3;
@@ -53,12 +50,8 @@ export class ArticleComponent implements OnInit {
   refresh() {
     this.route.params.subscribe(params => {
       if (params.id) {
-        this.articleId = params.id;
-        this.articleService.getArticle(this.articleId).subscribe(ar => {
+        this.articleService.getArticle(params.id).subscribe(ar => {
           this.article = ar;
-          if (this.article.author.id == localStorage.getItem('uId')) {
-            this.imAuthor = true;
-          }
           this.areAnyComments();
         });
       }
@@ -123,7 +116,7 @@ export class ArticleComponent implements OnInit {
         id: 0,
         text: item.value,
         authorId: localStorage.getItem("uId"),
-        articleId: Number(this.articleId)
+        articleId: Number(this.article.id)
       };
       item.value = '';
       this.commentService.addComment(comment).subscribe(value => {
