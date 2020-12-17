@@ -10,10 +10,11 @@
 
 }
 
-.login-form-block{
+.login-form-block {
   height: 100%;
   backdrop-filter: blur(3px);
 }
+
 .login-elements-block {
   height: 100%;
 }
@@ -37,4 +38,8 @@
 
 .form-button {
   width: 100%;
+}
+
+.badge {
+  font-size: 120%;
 }
