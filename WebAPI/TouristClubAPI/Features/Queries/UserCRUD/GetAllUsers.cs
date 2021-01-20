@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using TouristClubApi.Data.Models;
 using TouristClub.API.Data.DTOs;
+using TouristClubApi.Data.Models;
 
 namespace MedClinicalAPI.Features.Queries.UserCRUD
 {
@@ -32,6 +31,12 @@ namespace MedClinicalAPI.Features.Queries.UserCRUD
                 foreach (var user in users)
                 {
                     var roles = (List<string>)await _userManager.GetRolesAsync(user);
+
+                    var role = "user";
+                    if (roles.Count != 0)
+                    {
+                        role = roles[0];
+                    }
                     var userDto = new UserDto
                     {
                         Id = user.Id,
@@ -41,7 +46,7 @@ namespace MedClinicalAPI.Features.Queries.UserCRUD
                         Email = user.Email,
                         PhoneNumber = user.PhoneNumber,
                         Age = user.Age,
-                        Role = roles[0]
+                        Role = role
                     };
                     usersDto.Add(userDto);
                 }

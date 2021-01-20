@@ -33,6 +33,7 @@ export class TopicsTableComponent implements OnInit {
     this.adminService.getTopics().subscribe(value => {
       this.topics = value;
       this.changeDetectorRefs.detectChanges();
+      
     });
   }
 

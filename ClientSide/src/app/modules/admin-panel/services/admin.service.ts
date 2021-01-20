@@ -1,3 +1,4 @@
+import { Ticket } from './../../../data/models/ticket';
 import { Role } from './../../../data/models/role';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -122,5 +123,14 @@ export class AdminService {
 
     changeRole(role: Role): Observable<boolean> {
         return this.http.post<boolean>(`${environment.apiUrl}/account/roles`, role);
+    }
+
+    //TICKETS
+    getTickets(): Observable<Ticket[]> {
+        return this.http.get<Ticket[]>(`${environment.apiUrl}/tickets`);
+    }
+
+    deleteTicket(id: number) {
+        return this.http.delete(`${environment.apiUrl}/tickets/${id}`);
     }
 }
