@@ -1,3 +1,4 @@
+import { TicketsTableComponent } from './tables/tickets-table/tickets-table.component';
 import { UsersTableComponent } from './tables/users-table/users-table.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgModule } from '@angular/core';
@@ -31,6 +32,7 @@ import { ChangeRoleComponent } from './forms/cnange-role/cnange-role.component';
     ArticlesTableComponent,
     ExcursionTableComponent,
     UsersTableComponent,
+    TicketsTableComponent,
     AddTopicComponent,
     AddArticleComponent,
     AddExcursionComponent,

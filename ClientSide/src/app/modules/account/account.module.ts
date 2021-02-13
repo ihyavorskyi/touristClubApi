@@ -9,7 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChangePasswordFormComponent } from './change-password-form/change-password-form.component';
 import { CabinetHeaderComponent } from './cabinet-header/cabinet-header.component';
 import { UploadHelperComponent } from './extensions/upload-helper/upload-helper.component';
-import { CreateUserFormComponent } from './forms/create-user-form/create-user-form.component';
 import { MyReservationComponent } from './my-reservation/my-reservation.component';
 
 
@@ -22,7 +21,6 @@ import { MyReservationComponent } from './my-reservation/my-reservation.componen
     ChangePasswordFormComponent,
     CabinetHeaderComponent,
     UploadHelperComponent,
-    CreateUserFormComponent,
     MyReservationComponent
   ],
   imports: [

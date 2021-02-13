@@ -6156,11 +6156,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#\\touristClubApi\\WebAPI\\TouristClubAPI\\TouristClub.API.csproj",
+      "projectUniqueName": "D:\\Projects\\C#\\touristClubApi\\WebAPI\\TouristClubAPI\\TouristClub.API.csproj",
       "projectName": "TouristClub.API",
-      "projectPath": "D:\\C#\\touristClubApi\\WebAPI\\TouristClubAPI\\TouristClub.API.csproj",
+      "projectPath": "D:\\Projects\\C#\\touristClubApi\\WebAPI\\TouristClubAPI\\TouristClub.API.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "D:\\C#\\touristClubApi\\WebAPI\\TouristClubAPI\\obj\\",
+      "outputPath": "D:\\Projects\\C#\\touristClubApi\\WebAPI\\TouristClubAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6178,6 +6178,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -6189,6 +6190,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "MediatR": {
             "target": "Package",
@@ -6273,7 +6275,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

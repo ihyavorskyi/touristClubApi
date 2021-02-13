@@ -9,14 +9,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './common/guards/auth-guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { DepartmentModule } from './modules/department-functionality/department.module';
-import { DepartmentComponent } from './modules/department-functionality/department/department.component';
-import { DepartmentsListComponent } from './modules/department-functionality/departments-list/departments-list.component';
-import { AddRecordFormComponent } from './modules/department-functionality/forms/add-record-form/add-record-form.component';
 import { AccountModule } from './modules/account/account.module';
 import { CabinetComponent } from './modules/account/cabinet/cabinet.component';
 import { ChangePasswordFormComponent } from './modules/account/change-password-form/change-password-form.component';
-import { SettingsComponent } from './modules/account/settings/settings.component';
 import { SupportComponent } from './modules/account/support/support.component';
 import { ArticleComponent } from './modules/articles/article/article/article.component';
 import { ArticlesListComponent } from './modules/articles/articles-list/articles-list/articles-list.component';
@@ -57,7 +52,6 @@ export const MY_DATE_FORMATS = {
     MainPageComponent
   ],
   entryComponents: [
-    AddRecordFormComponent,
     ChangePasswordFormComponent,
     MakeAReservationDialogComponent
   ],
@@ -85,7 +79,6 @@ export const MY_DATE_FORMATS = {
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    DepartmentModule,
     ArticlesModule,
     ExcursionsModule,
     AdminPanelModule,

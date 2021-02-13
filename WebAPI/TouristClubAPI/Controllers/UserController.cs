@@ -4,7 +4,6 @@ using MedClinicalAPI.Features.Queries.UserCRUD;
 using MediatR;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 using TouristClub.API.Data.DTOs;
 using TouristClub.API.Features.Commands.UserCRUD.ChangeUserPassword;

@@ -5,6 +5,7 @@ using TouristClub.API.Data.DTOs;
 using TouristClub.API.Data.Models;
 using TouristClub.API.Features.Commands.ExcursionCRUD;
 using TouristClub.API.Features.Commands.TicketCRUD;
+using TouristClub.API.Features.Queries.TicketCRUD;
 
 namespace TouristClub.API.Controllers
 {
@@ -17,6 +18,14 @@ namespace TouristClub.API.Controllers
         public TicketController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAsync()
+        {
+            var getQuery = new GetAllTickets.Query();
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
         }
 
         [HttpPost]
