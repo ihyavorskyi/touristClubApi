@@ -19,6 +19,9 @@
 #### User page.
 ![alt](Screenshots/18.png)  
 
+#### My reservation page.
+![alt](Screenshots/26.png)  
+
 #### Acticles page.  
 ![alt](Screenshots/6.png)  
 
@@ -42,7 +45,6 @@
 ![alt](Screenshots/23.png)  
 ![alt](Screenshots/24.png)  
 ![alt](Screenshots/25.png)  
-![alt](Screenshots/26.png)  
 ![alt](Screenshots/27.png)  
 ![alt](Screenshots/28.png)  
 ### Access level: journalist
