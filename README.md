@@ -44,7 +44,8 @@
 ![alt](Screenshots/7.png)  
 
 #### Reservation form on excursion page.  
-![alt](Screenshots/16.png)  
+![alt](Screenshots/11.png)
+![alt](Screenshots/16.png)
 
 ### Access level: journalist
 ### Access level: admin
