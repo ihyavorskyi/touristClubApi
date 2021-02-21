@@ -48,4 +48,11 @@
 ![alt](Screenshots/16.png)
 
 ### Access level: journalist
+#### Articles page(new button for journalist).  
+![alt](Screenshots/28.png)
+
+#### Add artice form.  
+![alt](Screenshots/13.png)
+
+
 ### Access level: admin
