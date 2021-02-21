@@ -3,13 +3,13 @@
 1. ER - diagram.
 ![alt](Screenshots/111.png)  
 ### Access level: user
-2. Header.
+2. Header.  
 ![alt](Screenshots/2.png)  
-3.Footer.
+3.Footer.  
 ![alt](Screenshots/1.png)  
-4.Sign up form.
+4.Sign up form.  
 ![alt](Screenshots/3.png)  
-5.Entrance form.
+5.Entrance form.  
 ![alt](Screenshots/4.png)  
 
 ![alt](Screenshots/5.png)
