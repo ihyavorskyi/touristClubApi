@@ -61,11 +61,14 @@
 ![alt](Screenshots/10.png)
 
 ### Access level: admin
-#### Admin panel. 
+#### Admin panel. Tables:
 ![alt](Screenshots/15.png)
 ![alt](Screenshots/17.png)
 ![alt](Screenshots/19.png)
 ![alt](Screenshots/22.png)
 ![alt](Screenshots/23.png)
+
+
+#### Admin panel. Some forms:
 ![alt](Screenshots/12.png)
 ![alt](Screenshots/14.png)
