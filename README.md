@@ -27,5 +27,3 @@
 ![alt](Screenshots/26.png)
 ![alt](Screenshots/27.png)
 ![alt](Screenshots/28.png)
-![alt](Screenshots/29.png)
-![alt](Screenshots/30.png)
