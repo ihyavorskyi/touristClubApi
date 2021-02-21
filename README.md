@@ -1,4 +1,7 @@
 # Tourist club
+For more details, see the screenshots below or read the file "READ.docx"
+
+
 ## Screenshots
 #### ER - diagram.
 ![alt](Screenshots/111.png)    
