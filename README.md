@@ -1,5 +1,6 @@
 # Tourist club
-This project is a web application in which users can read and comment on travel articles, search for tours and book tickets for them.
+This project is a web application in which users can read and comment on travel articles, search for tours and book tickets for them.  
+Users are divided by roles: "user", "journalist", "admin". Access levels are issued depending on the role.  
 For more details, see the screenshots below or read the file "READ.docx"
 
 
