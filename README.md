@@ -1,5 +1,6 @@
 # Tourist club
 ## Screenshots
+### Access level: user
 #### 1. Header.
 ![alt](Screenshots/2.png)
 #### 2.Footer.
@@ -32,3 +33,5 @@
 ![alt](Screenshots/26.png)
 ![alt](Screenshots/27.png)
 ![alt](Screenshots/28.png)
+### Access level: journalist
+### Access level: admin
