@@ -1,7 +1,8 @@
 # Tourist club
-### Tourist club
+## Screenshots
+1.
 ![alt](Screenshots/2.png)
-# Tourist club
+2.
 ![alt](Screenshots/1.png)
 ![alt](Screenshots/3.png)
 ![alt](Screenshots/4.png)
