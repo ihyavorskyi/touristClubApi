@@ -11,9 +11,10 @@
 ![alt](Screenshots/3.png)    
 #### Entrance form.    
 ![alt](Screenshots/4.png)    
+#### Acticles page.  
+![alt](Screenshots/6.png)  
 
 ![alt](Screenshots/5.png)  
-![alt](Screenshots/6.png)  
 ![alt](Screenshots/7.png)  
 ![alt](Screenshots/8.png)  
 ![alt](Screenshots/9.png)  
