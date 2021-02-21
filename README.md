@@ -1,8 +1,8 @@
 # Tourist club
 ## Screenshots
-1.
+1. Header.
 ![alt](Screenshots/2.png)
-2.
+2.Footer.
 ![alt](Screenshots/1.png)
 ![alt](Screenshots/3.png)
 ![alt](Screenshots/4.png)
