@@ -55,17 +55,17 @@
 ![alt](Screenshots/13.png)
 
 #### Buttons for modify article on her page.  
-![alt](Screenshot/8.png)
+![alt](Screenshots/8.png)
 
 #### Update article form.  
-![alt](Screenshot/10.png)
+![alt](Screenshots/10.png)
 
 ### Access level: admin
 #### Admin panel. 
-![alt](Screenshot/15.png)
-![alt](Screenshot/17.png)
-![alt](Screenshot/19.png)
-![alt](Screenshot/22.png)
-![alt](Screenshot/23.png)
-![alt](Screenshot/12.png)
-![alt](Screenshot/14.png)
+![alt](Screenshots/15.png)
+![alt](Screenshots/17.png)
+![alt](Screenshots/19.png)
+![alt](Screenshots/22.png)
+![alt](Screenshots/23.png)
+![alt](Screenshots/12.png)
+![alt](Screenshots/14.png)
