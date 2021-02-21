@@ -1,7 +1,7 @@
 # Tourist club
 ## Screenshots
 #### 1. ER - diagram.
-![alt](Screenshots/ER - diagram.png)
+![alt](Screenshots/111.png)
 ### Access level: user
 #### 1. Header.
 ![alt](Screenshots/2.png)
