@@ -2,15 +2,23 @@
 ## Screenshots
 #### ER - diagram.
 ![alt](Screenshots/111.png)    
+
 ### Access level: user
 #### Header.    
 ![alt](Screenshots/2.png)    
+
 #### Footer.    
 ![alt](Screenshots/1.png)    
+
 #### Sign up form.    
 ![alt](Screenshots/3.png)    
+
 #### Entrance form.    
-![alt](Screenshots/4.png)    
+![alt](Screenshots/4.png)   
+
+#### User page.
+![alt](Screenshots/18.png)  
+
 #### Acticles page.  
 ![alt](Screenshots/6.png)  
 
@@ -26,7 +34,7 @@
 ![alt](Screenshots/15.png)  
 ![alt](Screenshots/16.png)  
 ![alt](Screenshots/17.png)  
-![alt](Screenshots/18.png)  
+
 ![alt](Screenshots/19.png)  
 ![alt](Screenshots/20.png)  
 ![alt](Screenshots/21.png)  
