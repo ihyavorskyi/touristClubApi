@@ -5,7 +5,7 @@ For more details, see the screenshots below or read the file "READ.docx"
 
 ## Used in the development
   1. C#
-  2. ASP .net Core Web Api
+  2. ASP.NET Core WEB API
   3. Mediator
   4. CQRS
   5. Angular 8
