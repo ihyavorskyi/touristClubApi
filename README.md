@@ -34,9 +34,17 @@
 #### Acticle page.  
 ![alt](Screenshots/5.png)  
 
-#### Comment page on acticle page.  
+#### Comment block on acticle page.  
 ![alt](Screenshots/25.png)  
 
+#### Exursions page.  
+![alt](Screenshots/9.png)  
+
+#### Exursion page.  
+![alt](Screenshots/7.png)  
+
+#### Reservation form on excursion page.  
+![alt](Screenshots/16.png)  
 
 ### Access level: journalist
 ### Access level: admin
