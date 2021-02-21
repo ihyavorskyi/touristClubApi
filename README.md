@@ -5,7 +5,7 @@
 ### Access level: user
 #### Header.    
 ![alt](Screenshots/2.png)    
-####Footer.    
+#### Footer.    
 ![alt](Screenshots/1.png)    
 #### Sign up form.    
 ![alt](Screenshots/3.png)    
