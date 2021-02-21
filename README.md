@@ -1,2 +1,2 @@
 # Tourist club
-![alt-текст](https://github.com/ihyavorskyi/touristClubApi/tree/master/Screenshots/1.png "footer")
+![alt-текст](Screenshots/1.png "footer")
