@@ -1,16 +1,17 @@
 # Tourist club
 ## Screenshots
-1. ER - diagram.  
-![alt](Screenshots/111.png)
+1. ER - diagram.
+![alt](Screenshots/111.png)  
 ### Access level: user
-2. Header.  
-![alt](Screenshots/2.png)
-3.Footer.  
-![alt](Screenshots/1.png)
-4.Sign up form.  
-![alt](Screenshots/3.png)
-5.Entrance form.  
-![alt](Screenshots/4.png)
+2. Header.
+![alt](Screenshots/2.png)  
+3.Footer.
+![alt](Screenshots/1.png)  
+4.Sign up form.
+![alt](Screenshots/3.png)  
+5.Entrance form.
+![alt](Screenshots/4.png)  
+
 ![alt](Screenshots/5.png)
 ![alt](Screenshots/6.png)
 ![alt](Screenshots/7.png)
