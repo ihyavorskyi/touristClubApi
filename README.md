@@ -19,6 +19,9 @@
 #### User page.
 ![alt](Screenshots/18.png)  
 
+#### Change password page.
+![alt](Screenshots/21.png)  
+
 #### My reservation page.
 ![alt](Screenshots/26.png)  
 
