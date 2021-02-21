@@ -4,13 +4,17 @@
 
 ![alt](Screenshots/111.png)
 ### Access level: user
-#### 1. Header.
+2. Header.
+
 ![alt](Screenshots/2.png)
-#### 2.Footer.
+3.Footer.
+
 ![alt](Screenshots/1.png)
-#### 3.Sign up form.
+4.Sign up form.
+
 ![alt](Screenshots/3.png)
-#### 4.Entrance form.
+
+5.Entrance form.
 ![alt](Screenshots/4.png)
 ![alt](Screenshots/5.png)
 ![alt](Screenshots/6.png)
