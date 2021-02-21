@@ -1,2 +1,2 @@
 # Tourist club
-![alt-текст](Screenshots/1.png "footer")
+![alt](Screenshots/1.png)
