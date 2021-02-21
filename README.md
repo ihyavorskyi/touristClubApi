@@ -3,8 +3,14 @@ This project is a web application in which users can read and comment on travel 
 Users are divided by roles: "user", "journalist", "admin". Access levels are issued depending on the role.  
 For more details, see the screenshots below or read the file "READ.docx"
 
-## Development
-Used in the development:
+## Used in the development
+  1. C#
+  2. ASP .net Core Web Api
+  3. Mediator
+  4. CQRS
+  5. Angular 8
+  6. HTML5
+  7. SCSS
 
 ## Screenshots
 #### ER - diagram.
